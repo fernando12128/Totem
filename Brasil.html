@@ -331,6 +331,30 @@ const PRODUCT_IMG = {
     return parseCSV((el.textContent || '').trim());
   }
 
+  // ===== Slugs (produto -> id dos docs em produtos.html) =====
+const PRODUCT_SLUG = {
+  // exceções onde o doc usa um nome diferente do CSV
+  'Cal-d-mix Pet': 'cal-d-mix',
+  'Vetmax plus Suspensão': 'vetmax-plus-suspens-o',
+  'Vetmax plus Comprimido': 'vetmax-plus-comp',
+  'Aminomix Pet Pó': 'aminomix-pet-po',
+  'Hepvet Comprimidos': 'hepvet-comp',
+  'Probiótico Vetnil Cães e Gatos': 'probiotico-vetnil-c-es-e-gatos',
+  'Pelo e Derme 750 e 1500': 'pelo-e-derme-750-1500',
+  // adicione aqui se aparecer algum “não encontrado” no produtos.html
+};
+
+// slug automático (fallback) — remove acento, troca não-alfanum por "-"
+function autoSlug(nome){
+  return (nome||'')
+    .normalize('NFD').replace(/\p{Diacritic}/gu,'')
+    .toLowerCase()
+    .replace(/[%.,/()®°ºª+]+/g,' ')   // tira símbolos chatos
+    .replace(/\s+/g,'-')              // espaços -> hífen
+    .replace(/-+/g,'-')               // hifens duplos
+    .replace(/^-|-$/g,'');            // bordas
+}
+
   // ===== Produtos =====
   // Encontra a linha de cabeçalho cuja primeira célula é "PRODUTO" (case-insensitive)
   function findProdutosHeader(rows){
@@ -363,6 +387,7 @@ function produtosParaPais(model, pais){
 }
 
 function renderProdutos(lista){
+  const pais = getParam('pais');
   const grid = document.getElementById('produtosGrid');
   grid.innerHTML = '';
   if(!lista.length){
@@ -370,21 +395,28 @@ function renderProdutos(lista){
     return;
   }
   for(const p of lista){
-    const card = document.createElement('div');
-    card.className = 'produto';
+    const slug = PRODUCT_SLUG[p.nome] || autoSlug(p.nome);
+    const url = `produtos.html?pais=${encodeURIComponent(pais)}&produto=${encodeURIComponent(slug)}`;
 
-    const src = PRODUCT_IMG[p.nome]; // usa seu mapa manual
+    const card = document.createElement('a');
+    card.className = 'produto';
+    card.href = url;
+    card.style.textDecoration = 'none';
+
+    const src = PRODUCT_IMG[p.nome];
     if(src){
       const img = document.createElement('img');
       img.loading = 'lazy';
       img.alt = p.nome;
       img.src = src;
-      img.onerror = function(){ this.remove(); }; // se 404, só some a imagem
+      img.onerror = function(){ this.remove(); };
       card.appendChild(img);
     }
 
     const label = document.createElement('p');
     label.textContent = p.nome;
+    label.style.color = '#006d4f';
+    label.style.fontWeight = 'bold';
     card.appendChild(label);
 
     grid.appendChild(card);
@@ -433,10 +465,11 @@ function distribuidorPorPais(rows, pais){
 
 function renderDistribuidor(pais, d){
   document.title = `Produtos — ${pais}`;
-  const flag = document.getElementById('flagImg');
-  const fallbackFlag = `./images/bandeiras/${encodeURIComponent(pais)}.png`;
-  flag.src = fallbackFlag;
-  flag.alt = `Bandeira de ${pais}`;
+  setFlagImage(pais);
+  // const flag = document.getElementById('flagImg');
+  // const fallbackFlag = `./images/Bandeiras Paises/${encodeURIComponent(pais)}.png`;
+  // flag.src = fallbackFlag;
+  // flag.alt = `Bandeira de ${pais}`;
 
   // limpa
   const set = (id, html) => { const el = document.getElementById(id); if (el) el.innerHTML = html || ''; };
@@ -458,6 +491,66 @@ function renderDistribuidor(pais, d){
     set('distEmail','');
     set('distSite','');
   }
+}
+
+// === Bandeiras ===
+const FLAG_BASE = './images/Bandeiras Paises/'; // <- pasta correta
+
+// mapeia o nome do CSV -> basename do arquivo da bandeira
+const FLAG_MAP = {
+  'Mexico': 'MEXICO',
+  'Chile': 'CHILE',
+  'Peru': 'PERU',
+  'Uruguay': 'URUGUAI',
+  'Colombia': ['COLOMBIA','Comlombia'], // tenta os dois (cobre o typo do arquivo)
+  'Paraguay': 'PARAGUAI',
+  'Costa Rica': 'CostaRica',
+  'Panama': 'PANAMA',
+  'Ecuador': 'ECUADOR',
+  'Bolivia': 'BOLIVIA',
+  'Dominican Republic': 'REPUBLICADOMINICANA',
+  'Slovenia': 'SLOVENIA',
+  'United Arab Emirates': 'EMIRADOSARABES',
+  'Brazil': 'Brasil'
+};
+
+// ordem de extensões a tentar
+const FLAG_EXTS = ['.png', '.svg', '.webp', '.jpg', '.jpeg'];
+
+// util pra gerar candidatos
+function* flagCandidates(pais){
+  const baseNames = FLAG_MAP[pais] ? (Array.isArray(FLAG_MAP[pais]) ? FLAG_MAP[pais] : [FLAG_MAP[pais]]) : [];
+  // 1) nomes do mapa
+  for (const b of baseNames){
+    for (const ext of FLAG_EXTS){
+      yield encodeURI(FLAG_BASE + b + ext);
+    }
+  }
+  // 2) fallback: nome do país “slugado”
+  const slug = (pais||'').normalize('NFD').replace(/\p{Diacritic}/gu,'').replace(/[^a-z0-9]+/gi,'').toUpperCase();
+  for (const ext of FLAG_EXTS){
+    yield encodeURI(FLAG_BASE + slug + ext);
+  }
+  // 3) fallback final: nome original com espaço (pouco provável, mas não custa)
+  for (const ext of FLAG_EXTS){
+    yield encodeURI(FLAG_BASE + pais + ext);
+  }
+}
+
+function setFlagImage(pais){
+  const img = document.getElementById('flagImg');
+  if(!img) return;
+  img.alt = `Bandeira de ${pais}`;
+  img.loading = 'lazy';
+
+  const iter = flagCandidates(pais);
+  const tryNext = () => {
+    const next = iter.next();
+    if (next.done){ img.remove(); return; }  // sem bandeira? remove o <img> pra não quebrar layout
+    img.src = next.value;
+  };
+  img.onerror = tryNext;
+  tryNext();
 }
 
   // ===== Boot =====
