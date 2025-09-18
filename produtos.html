@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="./effects.css">
     <style>
       
         header{
@@ -13,6 +14,7 @@
             box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.8);
             display: flex;
             justify-content: space-between;
+            align-items: center;
         }
 
         body {
@@ -33,6 +35,34 @@
         #home{
           margin-top: 1vh;
           height: 4vh;
+          display: block;
+        }
+
+        .home-icon {
+          height: 3vh;
+          margin-top: .5vh;
+          margin-right: .5vh;
+          display: block;
+        }
+
+        .nav-actions {
+          display: flex;
+          align-items: center;
+          gap: 2.4vh;
+        }
+
+        .nav-icon , .home-icon{
+          display: inline-flex;
+          border: 0;
+          background: none;
+          cursor: pointer;
+          color: white;
+          font-size: 4vw;
+          margin-bottom: 40px;
+        }
+
+        .nav-icon {
+          margin-right: 40px;
         }
 
         .Nome{
@@ -102,7 +132,7 @@
     <header>
         <img id="logo" src="images/IMGS_PARA_BANNER/vetnil Logo.png" alt="">
         <div>
-          <button onclick="history.back()" style="background: none; border: none; cursor: pointer; color: white; font-size: 4vw; margin-bottom: 40px;" title="Voltar">
+          <button id="backBtn" type="button" onclick="history.back()" title="Voltar" class="nav-icon">
                     <img id="home" src="images/IMGS_PARA_BANNER/Arrow.png" alt="">
               </button>
           <a id="homeLink" href="index.html" class="home-icon" title="Voltar ao início"><img id="home" src="images/IMGS_PARA_BANNER/home.png" alt=""></a>
@@ -985,7 +1015,7 @@ United Arab Emirates;Inglês
 </script>
 
 
-
+<script src="./pressFX.js" defer></script>
 
     <script>
 
@@ -1112,6 +1142,33 @@ United Arab Emirates;Inglês
     }
     return out;
   })();
+
+  (function setupNav(){
+  const params = new URL(location.href).searchParams;
+  const pais = params.get('pais');
+
+  // Mantém ?pais= no link da home, se existir
+  const homeLink = document.getElementById('homeLink');
+  if (homeLink) homeLink.href = pais ? `index.html?pais=${encodeURIComponent(pais)}` : 'index.html';
+
+  // Botão voltar com fallback para a home
+  const backBtn = document.getElementById('backBtn');
+  if (backBtn) {
+    backBtn.addEventListener('click', function(e){
+      e.preventDefault();
+      const canGoBack = history.length > 1 &&
+                        document.referrer &&
+                        new URL(document.referrer).origin === location.origin;
+      if (canGoBack) history.back();
+      else location.href = homeLink ? homeLink.href : 'index.html';
+    });
+  }
+
+  // Aplica efeito de "press" (cards, voltar, home)
+  if (window.attachPressFX) attachPressFX('.nav-icon, .home-icon');
+
+  
+})();
 
   (function bootProduto(){
     const pais   = getParam('pais') || '';

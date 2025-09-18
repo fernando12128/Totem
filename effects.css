@@ -1,0 +1,20 @@
+/* elementos “pressionáveis” (cards, itens de produto etc.) */
+.pressable {
+  transition: transform 280ms ease, box-shadow 280ms ease;
+}
+
+/* desktop: mantém o hover existente */
+@media (hover: hover) {
+  .pressable:hover { transform: scale(1.18); box-shadow: 0 10px 22px rgba(0,0,0,.28); }
+}
+
+/* touch: mesmo visual do hover quando ativo */
+.pressable.is-touch-active {
+  transform: scale(1.18);
+  /* box-shadow: 0 10px 22px rgba(0,0,0,.28); */
+}
+
+/* acessibilidade/opção de reduzir movimento */
+@media (prefers-reduced-motion: reduce) {
+  .pressable, .pressable.is-touch-active { transition: none; }
+}
