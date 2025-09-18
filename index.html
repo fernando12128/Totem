@@ -126,5 +126,47 @@
         </div>
 
         <footer></footer>
+
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card');
+            
+            cards.forEach(card => {
+                const link = card.querySelector('a');
+                
+                // Touch events
+                card.addEventListener('touchstart', function(e) {
+                    e.preventDefault();
+                    this.classList.add('is-touch-active');
+                }, { passive: false });
+                
+                card.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    this.classList.remove('is-touch-active');
+                    
+                    // Navigate after visual feedback
+                    setTimeout(() => {
+                        if (link) {
+                            window.location.href = link.href;
+                        }
+                    }, 280);
+                }, { passive: false });
+                
+                card.addEventListener('touchcancel', function() {
+                    this.classList.remove('is-touch-active');
+                });
+                
+                // Keyboard support
+                card.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        if (link) {
+                            window.location.href = link.href;
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
