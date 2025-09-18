@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vetnil Produtos</title>
+  <style>
+
+    *{
+        margin: 0;
+    }
+    
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f5f5f5;
+    }
+
+    /* Cabeçalho */
+    header {
+      background-color: #006d4f;
+      color: white;
+      padding: 15px 30px;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    .distribuidor {
+      display: flex;
+      justify-content: center;
+      gap: 31px;
+      
+    }
+
+    .distribuidor img {
+      border-radius: 14px;
+      width: 8vh;
+      height: 5vh;
+      border: 4px solid white;
+    }
+
+    .distr{
+        padding-top: 20px;
+        padding-bottom: 20px;
+        color: white;
+        background-color: green;
+    }
+
+    .distr h3{
+        font-size: 29px;
+        padding-left: 2.5vh;
+        font-weight: bold;
+        padding-bottom: 15px;
+    }
+
+    .distribuidorInfo {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    
+    .info {
+      font-size: 17px;
+      
+    }
+
+    .contatos {
+      margin-left: 50px;
+      text-align: right;
+      font-size: 15px;
+      
+    }
+
+    /* Ícone Home */
+    .home-icon {
+      font-size: 22px;
+      background: white;
+      color: #006d4f;
+      padding: 8px;
+      border-radius: 50%;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Grid de produtos */
+    .produtos {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      padding: 30px;
+      width: 95vw;
+      margin: auto;
+    }
+
+    .produto {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      height: 16vh;
+      padding: 10px;
+    }
+
+    .produto p {
+      margin: 0;
+      color: #006d4f;
+      font-weight: bold;
+    }
+
+    .produto img{max-width:80%;max-height:60%;object-fit:contain;margin-bottom:8px}
+
+    footer{
+        height: 50px;
+        background-color: rgb(0, 87, 0);
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="header-container">
+      <div class="logo" id="logo">VETNIL®</div>
+      <a id="homeLink" href="index.html" class="home-icon" title="Voltar ao início">🏠</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Distribuidor -->
+    <div class="distr">
+      <h3>Distribuidor:</h3>
+
+      <div class="distribuidor">
+        <div class="distribuidorBandeira">
+          <img id="flagImg" src="" alt="Bandeira" />
+        </div>
+        <div class="distribuidorInfo">
+          <div class="info" id="distInfo"></div>
+          <div class="contatos" id="distContacts"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grid dinâmica de produtos -->
+    <div id="produtosGrid" class="produtos"></div>
+  </main>
+
+  <footer></footer>
+
+  <!-- ===== COLE AQUI O CSV DE PRODUTOS =====
+       Cabeçalho: Produto,<País1>,<País2>,...
+       Marque X/✓/✔ onde o produto está disponível.  -->
+  <script id="csv-produtos" type="text/plain">
+;PRODUTOS X PAÍSES;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+;PRODUTO;Mexico;Chile;Peru;Uruguay;Colombia;Paraguay;Costa Rica;Panama;Ecuador;Bolivia;Dominican Republic;Slovenia;United Arab Emirates;Brazil;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+1;Acepran 0,2%;;;;;;;;;;;X;X;;;;;;;;;;;;;
+2;Acepran Gotas;;;;;;;;;;;X;X;;;;;;;;;;;;;
+3;Alantol;;;X;;;X;;X;;x;X;X;;;;;;;;;;;;;
+4;Aminomix Pet;;;;;X;X;;X;;x;X;X;X;;;;;;;;;;;;
+5;Aminomix Pet Comprimido;;;X;;;;X;;;;;;;;;;;;;;;;;;
+6;Aminomix Pet Pó;;X;;X;;;;;X;;;;;;;;;;;;;;;;
+;Aurivet® Clean pH Neutro;;;;;;;;;;;;;;X;;;;;;;;;;;
+7;Cal-d-mix Pet;X;;;X;;;;;;x;X;X;;;;;;;;;;;;;
+8;Condroton Injetavel;;;;;X;X;;;;x;X;X;;;;;;;;;;;;;
+9;Condroton Comprimidos;;;;;X;X;;X;;;;X;;;;;;;;;;;;;
+10;Doxiciclina Vetnil Solução Injetável;;;;;;X;;;;x;;X;;X;;;;;;;;;;;
+11;Enterex;X;;X;;X;;X;X;;x;X;X;;;;;;;;;;;;;
+12;Eletrolitico Pet;;X;X;X;X;;;;;x;X;X;X;;;;;;;;;;;;
+;Firocoxib Vetnil® Comprimido;;;;;;;;;;;;;;X;;;;;;;;;;;
+13;Geripet Comprimido;;;X;X;X;X;X;;;;;X;;;;;;;;;;;;;
+14;Glicopan Pet;X;X;X;X;X;X;X;X;X;x;X;X;X;;;;;;;;;;;;
+15;Hidrovit;;;;;;;;;;;;;X;;;;;;;;;;;;
+16;Hemolitan Pet ;X;X;X;X;X;X;X;X;X;x;X;X;X;;;;;;;;;;;;
+17;Hemolitan Pet Comprimidos;X;X;X;X;X;X;X;X;X;X;X;X;X;;;;;;;;;;;;
+18;Hemolitan Gold Comprimidos;;;;X;;;;;;;;X;;;;;;;;;;;;;
+19;Hepvet ;;;;X;X;X;X;X;;x;;X;;;;;;;;;;;;;
+20;Hepvet Comprimidos;;;;;;;;;X;; ;;;;;;;;;;;;;;
+21;Keravit;;;;;;;;;;;X;X;;;;;;;;;;;;;
+;Meloxinew® 0,2% Injetável;;;;;;;;;;;;;;X;;;;;;;;;;;
+22;Nutralife 14g;;X;;;;X;;;;;;X;;;;;;;;;;;;;
+23;Nutralife Intensiv;;X;;;X;;;X;X;;X;X;;;;;;;;;;;;;
+;Optivet® clean;;;;;;;;;;;;;;X;;;;;;;;;;;
+24;Organew Pet;;X;X;X;X;X;X;X;X;x;X;X;X;;;;;;;;;;;;
+25;Organew Pet Pasta;;;;;X;;X;X;;x;;X;;;;;;;;;;;;;
+26;Pelo e Derme Gold;;X;;;;;X;;X;;;X;;;;;;;;;;;;;
+27;Pelo e Derme 750 e 1500;;;X;X;X;;;X;;x;X;X;;;;;;;;;;;;;
+28;Periovet ;;;;;;; ;;;;;X;;;;;;;;;;;;;
+29;Pet Milk;;;X;X;;;;X;;x;;X;;;;;;;;;;;;;
+30;Petprazol;;;X;;;;;;;;X;X;;;;;;;;;;;;;
+31;Probiótico Vetnil Cães e Gatos;;;;;;;;;X;;;X;;;;;;;;;;;;;
+32;Quetamina Injetável Vetnil;;;;;;;;;;;X;X;;;;;;;;;;;;;
+33;Vita-Vet C;;X;;X;X;X;;X;X;x;;X;;;;;;;;;;;;;
+34;Vetmax plus Suspensão;;;;;;X;X;X;;;;X;;;;;;;;;;;;;
+35;Vetmax plus Comprimido;;;;;;X;X;X;;;;X;;;;;;;;;;;;;
+36;Vetaglós;;;;;;;;;;x;X;X;;;;;;;;;;;;;
+;Vetnidazol® Comprimidos;;;;;;;;;;;;;;X;;;;;;;;;;;
+;Vetnil® Skin Care Clean;;;;;;;;;;;;;;X;;;;;;;;;;;
+;Vetnil® Skin Care Defense;;;;;;;;;;;;;;X;;;;;;;;;;;
+;Vetnil® Skin Care Hidrat;;;;;;;;;;;;;;X;;;;;;;;;;;
+  </script>
+
+  <!-- ===== COLE AQUI O CSV DE DISTRIBUIDORES =====
+       Colunas suportadas: Pais,Nome,RazaoSocial,Endereco,Telefone,Email,Site,Bandeira
+       (as que não tiver, deixe vazias). -->
+  <script id="csv-distribuidores" type="text/plain">
+PAÍSES E DISTRIDUIDORES;;
+;;
+PAÍS;IDIOMA;DISTRIBUIDOR
+Mexico;Espanhol;"MEDERILAB
+Razão Social: MEDERI LAB S.A.P.I. de C.V.
+
+Puerto Yavaros, #2751 , Col. Miramar , Col. Miramar
+Zapopan Jalisco - Mexico
+
++52 10-28-36-76
+
+direccion@mederilab.com
+http://www.mederilab.com"
+Chile;Espanhol;"GABRICA
+Razão Social: GABRICA CHILE LTDA
+
+Av Lautaro, 301 , Bodega 02 , Quilicura
+Santiago - Chile
+
++562 366 1163
+
+direccion@gabrica.cl
+http://www.gabrica.cl"
+Peru;Espanhol;"INVETSA
+Razão Social: INVERSIONES VETERINÁRIAS S.A.
+
+Av. Del Pinar, 180 , Oficina 1101 , Chacarilla
+Lima - Peru
+
++511 617 5353
+
+yysa@invetsa.com
+http://www.invetsa.com"
+Uruguay;Espanhol;"SADENIR
+Razão Social: SADENIR S.A. IMPORTÁCION Y DISTRIBUCIÓN
+
+Av. Aerosur, Manzana, 50 , Solar 24 , San José de Carrasco
+Canelones - Uruguay
+
++598 2682 3312
+
+info@sadenir.com.uy
+http://www.sadenir.com.uy"
+Colombia;Espanhol;"GABRICA
+Razão Social: GABRICA S.A.S.
+
+Calle 164, 15-29 , Toberin
+Bogotá - Colombia
+
++571 519 0040 - +571 668 4444
+
+serviciocliente@gabrica.com.co
+http://www.gabrica.com"
+Paraguay;Espanhol;"AGROVETERINARIA CENTRAL S.R.L
+Razão Social: AGROVETERINARIA CENTRAL S.R.L
+
+Av. Gaspar Rodrigues de Francia entra Av Peru y Pai Perez
+Paraguai - Paraguay
+
++595 0982319879
+
+gerencia@agroveterinariacentral.com.py
+https://m.facebook.com/pg/agrovetcentralpy/community/"
+Costa Rica;Espanhol;"AGEAGRO
+Razão Social: AGENTES AGROVETERINÁRIOS
+
+San Isidro de Coronado, 600 metros nor , Vazquez de Coronado
+San Jose - Costa Rica
+
++506 2294 6821
+
+danielalpizar@ageagro.com
+http://www.ageagro.com"
+Panama;Espanhol;"REFARMIL
+Razão Social: REFARMIL EXPORT & IMPORT S/A
+
+CL 15 Rio Abajo, - , Rio Abajo
+Panamá - Panama
+
++507 224 8225
+
+goperaciones@refarmil.com
+http://www.refarmil.com"
+Ecuador;Espanhol;"ILIANZA S.A.
+Razão Social: ILIANZA S.A.
+
+Jose Maria Velasco Ibarra, - , Guayaquil
+Equador - Ecuador
+CEP: 090615
+
++593 99 962 7512
+
+rcaputim@ilianza.com
+https://ilianza.com/"
+Bolivia;Espanhol;"MULTIAGRO
+Razão Social: MULTIAGRO SERVICIOS AGROP. Y VETERINARIOS LTDA
+
+Av. Piraí, 462 , Urbari
+Santa Cruz - Bolivia
+
++591 3 353 5060
+
+multiagro@cotas.com.bo
+http://www.multiagro.com.bo"
+Dominican Republic;Espanhol;"HVAH - Arroyo Hondo
+Razão Social: HOSPITAL VETERINARIO ARROYO HONDO
+
+C. Euclides Morillo, 76 , Arroyo Hondo
+Santo Domingo - Dominican Republic
+
++809 412 2042
+
+mmallen@hvahrd.com
+http://www.vetarroyohondo.com"
+Slovenia;Inglês;"BTL
+Razão Social: BTL MARKETING D.O.O.
+
+Zaloznikova ulica, 43 , 1351 Brezovica pri Ljubljani , Brezovica pri
+Slovenia - Slovenia
+
++386 1 365 7810
+
+damjana@btl-m.si
+http://www.petshop.si"
+United Arab Emirates;Inglês;"GULF RIDER
+Razão Social: GULF RIDER VETERINARY MEDICINE & EQUIPMENT TRADING
+
+Al Qusais , 3 , P.O. Box 20629 , Industrial Area
+Dubai - United Arab Emirates
+
++971 4 2675881
+
+fisal@gulfrider.com
+http://www.gulfrider.com"
+  </script>
+
+  <script>
+  // ===== Utils =====
+  // === Caminhos de imagem por produto (preencha aqui) ===
+// ATENÇÃO: o nome tem que ser exatamente como está no CSV (acentos, espaços, %, etc.)
+const PRODUCT_IMG = {
+  // Exemplo:
+  // 'Glicopan Pet': './images/produtos/glicopan-pet/glicopan-pet.png',
+  // 'Vetmax plus Suspensão': './images/produtos/vetmax-plus-suspensao/vetmax-plus-suspensao.png',
+  'Acepran 0,2%': './images/produtos/01_ACEPRAN 0,2�/Acepran_0,2�_site.png',
+  'Acepran Gotas': './images/produtos/02_ACEPRAN GOTAS/Acepran_Gotas_site.png',
+  'Alantol': './images/produtos/03_ALANTOL/Packshot-Alantol_pet_site_V2.png',
+  'Aminomix Pet': './images/produtos/04_AMINOMIX PET/Packshot_Aminomix-Pet_site_V3.png',
+  'Aminomix Pet Comprimido': './images/produtos/05_AMINOMIX PET COMP/Aminomix-Pet_120-comp_site_V2.png',
+  'Aminomix Pet Pó': './images/produtos/06_AMINOMIX PET PÓ/Packshot_Aminomix100-500-Pet_site_V2.png',
+  'Aurivet® Clean pH Neutro': './images/produtos/',
+  'Cal-d-mix Pet': './images/produtos/07_CAL-D-MIX PET/Packshot_Cal-D-Mix_pet_site.png',
+  'Condroton Injetavel': './images/produtos/08_CONDROTON INJETÁVEL/Condroton-Injetável-10ml_pet_site.png',
+  'Condroton Comprimidos': './images/produtos/09_CONDROTON COMPRIMIDOS/Pack_Condroton-Comp_site.png',
+  'Doxiciclina Vetnil Solução Injetável': './images/produtos/10_DOXICICLINA VETNIL SOLUÇÃO INJETÁVEL/Doxiciclina Inj_site.png',
+  'Enterex': './images/produtos/11_ENTEREX/Enterex_8g_site.png',
+  'Eletrolitico Pet': './images/produtos/12_ELETROLÍTICO PET/Eletrolitico-Pet_10g_site.png',
+  'Firocoxib Vetnil® Comprimido': './images/produtos/',
+  'Geripet Comprimido': './images/produtos/13_GERIPET COMPRIMIDO/Geripet 30 comp_site.png',
+  'Glicopan Pet': './images/produtos/14_GLICOPAN PET/Packshot_Glicopan Pet_site.png',
+  'Hidrovit': './images/produtos/15_HIDROVIT/Packshot_Hidrovit_passaro_site_V2.png',
+  'Hemolitan Pet': './images/produtos/16_HEMOLITAN PET/Packshot_Hemolitan_liq._site_V2.png',
+  'Hemolitan Pet Comprimidos': './images/produtos/17_HEMOLITAN PET COMPRIMIDOS/Hemolitan Pet 30 comp_site.png',
+  'Hemolitan Gold Comprimidos': './images/produtos/18_HEMOLITAN GOLD COMPRIMIDOS/Hemolitan Gold 30 comp.png',
+  'Hepvet': './images/produtos/19_HEPVET/Packshot_Hepvet_V3.png',
+  'Hepvet Comprimidos': './images/produtos/20_HEPVET COMP/Hepvet_30 Comp_site_V2.png',
+  'Keravit': './images/produtos/21_KERAVIT/Keravit-5g_Pet_site_V2.png',
+  'Meloxinew® 0,2% Injetável': './images/produtos/',
+  'Nutralife 14g': './images/produtos/22_NUTRALIFE 14G/Nutralife_14g_site_V2.png',
+  'Nutralife Intensiv': './images/produtos/23_NUTRALIFE INTENSIV/Nutralife Intensiv_site_V3.png',
+  'Optivet® clean': './images/produtos/',
+  'Organew Pet': './images/produtos/24_ORGANEW PET/Organew_100g_site_V2.png',
+  'Organew Pet Pasta': './images/produtos/25_ORGANEW PET PASTA/Organew_12g_site.png',
+  'Pelo e Derme Gold': './images/produtos/26_PELO E DERME GOLD/Packshot_Pelo & Derme_site.png',
+  'Pelo e Derme 750 e 1500': './images/produtos/27_PELO E DERME 750 E 1500/Packshot_Pelo e Derme_750+1500_V2.png',
+  'Periovet': './images/produtos/28_PERIOVET/Packshot_Periovet_site_set24.png',
+  'Pet Milk': './images/produtos/29_PET MILK/Packshot_Pet-Milk_site_V2.png',
+  'Petprazol': './images/produtos/30_PETPRAZOL/Packshot_Petprazol_site.png',
+  'Probiótico Vetnil Cães e Gatos': './images/produtos/31_PROBIÓTICO VETNIL CÃES E GATOS/Probiotico_14g_site_V2.png',
+  'Quetamina Injetável Vetnil': './images/produtos/32_QUETAMINA INJETÁVEL VETNIL/Quetamina_10mL_site.png',
+  'Vita-Vet C': './images/produtos/33_VITA-VET C/Vita Vet C 30 ml_site.png',
+  'Vetmax plus Suspensão': './images/produtos/34_VETMAX SUSPENSAO/Vetmax-Susp.-Oral_site.png',
+  'Vetmax plus Comprimido': './images/produtos/35_VETMAX PLUS COMPRIMIDO/Vetmax-Plus-4-comp_site_V3.png',
+  'Vetaglós': './images/produtos/36_VETAGLÓS/Vetaglós_20g_site_V2.png',
+  'Vetnidazol® Comprimidos': './images/produtos/',
+  'Vetnil® Skin Care Clean': './images/produtos/',
+  'Vetnil® Skin Care Defense': './images/produtos/',
+  'Vetnil® Skin Care Hidrat': './images/produtos/'
+};
+
+  function getParam(name){ return new URL(location.href).searchParams.get(name); }
+
+  function parseCSV(text){
+    const first = text.split(/\r?\n/).find(l => l.trim());
+    const d = first?.includes('\t') ? '\t' : first?.includes(';') ? ';' : ',';
+    const rows=[], re=/\r\n|\n|\r/g; text=(text||'').replace(re,'\n');
+    let i=0, cur=[], val='', q=false;
+    while(i<text.length){
+      const ch=text[i];
+      if(q){ if(ch=='"'){ if(text[i+1]=='"'){val+='"'; i++;} else q=false; } else val+=ch; }
+      else { if(ch=='"') q=true; else if(ch==d){cur.push(val.trim()); val='';}
+        else if(ch=='\n'){cur.push(val.trim()); rows.push(cur); cur=[]; val='';}
+        else val+=ch; }
+      i++;
+    }
+    if(val.length||cur.length){cur.push(val.trim()); rows.push(cur);}
+    // remove linhas totalmente vazias
+    return rows.filter(r => r.length && r.some(c => c !== ''));
+  }
+
+  function loadCSVInline(id){
+    const el = document.getElementById(id);
+    return parseCSV((el.textContent || '').trim());
+  }
+
+  // ===== Produtos =====
+  // Encontra a linha de cabeçalho cuja primeira célula é "PRODUTO" (case-insensitive)
+  function findProdutosHeader(rows){
+  for(let r=0;r<rows.length;r++){
+    for(let c=0;c<rows[r].length;c++){
+      const cell = (rows[r][c]||'').normalize('NFD').replace(/\p{Diacritic}/gu,'').toUpperCase();
+      if(cell === 'PRODUTO'){ // no seu CSV está na 2ª coluna
+        // (se quiser, dá pra detectar também uma coluna "IMAGEM" aqui)
+        return { headerRow: r, nameCol: c };
+      }
+    }
+  }
+  throw new Error('Cabeçalho de produtos não encontrado (PRODUTO).');
+}
+
+function mapProdutos(rows){
+  const pos = findProdutosHeader(rows);
+  const headers = rows[pos.headerRow];          // linha do cabeçalho
+  const items   = rows.slice(pos.headerRow+1);  // dados
+  return { headers, items, nameCol: pos.nameCol };
+}
+
+function produtosParaPais(model, pais){
+  const { headers, items, nameCol } = model;
+  const idxPais = headers.indexOf(pais);
+  if(idxPais < 0) return [];
+  return items
+    .filter(r => ((r[idxPais]||'').trim().toUpperCase()).match(/^(X|✓|✔)$/))
+    .map(r => ({ nome: r[nameCol] || 'Nome produto' }));
+}
+
+function renderProdutos(lista){
+  const grid = document.getElementById('produtosGrid');
+  grid.innerHTML = '';
+  if(!lista.length){
+    grid.innerHTML = '<div style="grid-column:1/-1;opacity:.7">Nenhum produto para este país.</div>';
+    return;
+  }
+  for(const p of lista){
+    const card = document.createElement('div');
+    card.className = 'produto';
+
+    const src = PRODUCT_IMG[p.nome]; // usa seu mapa manual
+    if(src){
+      const img = document.createElement('img');
+      img.loading = 'lazy';
+      img.alt = p.nome;
+      img.src = src;
+      img.onerror = function(){ this.remove(); }; // se 404, só some a imagem
+      card.appendChild(img);
+    }
+
+    const label = document.createElement('p');
+    label.textContent = p.nome;
+    card.appendChild(label);
+
+    grid.appendChild(card);
+  }
+}
+
+  // ===== Distribuidor =====
+  // Seu CSV: "PAÍS;IDIOMA;DISTRIBUIDOR" (todo conteúdo em uma única coluna)
+  function findDistHeaderIndex(rows){
+    for(let i=0;i<rows.length;i++){
+      const r = rows[i].map(c => (c||'').normalize('NFD').replace(/\p{Diacritic}/gu,'').toUpperCase());
+      if(r[0]==='PAIS' && r[1]==='IDIOMA' && r[2]==='DISTRIBUIDOR') return i;
+    }
+    return -1;
+  }
+
+  function distribuidorPorPais(rows, pais){
+    const hIdx = findDistHeaderIndex(rows);
+    if(hIdx < 0) return null;
+    const head = rows[hIdx]; // [PAÍS, IDIOMA, DISTRIBUIDOR]
+    const data = rows.slice(hIdx+1);
+    // procura linha do país (comparação exata)
+    const row = data.find(r => (r[0]||'') === pais);
+    if(!row) return null;
+    const texto = row[2] || ''; // bloco multilinha
+    return { pais, bloco: texto };
+  }
+
+  function formatDistribuidorBloco(bloco){
+    // Converte quebras de linha em <br>, e destaca "Razão Social:" se existir
+    const esc = (s)=>s.replace(/[&<>]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[m]));
+    const html = esc(bloco).replace(/\r?\n\r?\n/g,'<br><br>').replace(/\r?\n/g,'<br>');
+    return html.replace(/Raz[aã]o Social:/i, '<strong>Razão Social:</strong>');
+  }
+
+  function renderDistribuidor(pais, d){
+    document.title = `Produtos — ${pais}`;
+    const info = document.getElementById('distInfo');
+    const contacts = document.getElementById('distContacts');
+    const flag = document.getElementById('flagImg');
+
+    // Tenta bandeira padrão por nome do país (ajuste o caminho conforme sua pasta)
+    const fallbackFlag = `./images/bandeiras/${encodeURIComponent(pais)}.png`;
+    flag.src = fallbackFlag;
+    flag.alt = `Bandeira de ${pais}`;
+
+    if(d && d.bloco){
+      // separa bloco em duas colunas de forma simples: tudo no "info"
+      info.innerHTML = formatDistribuidorBloco(d.bloco);
+      contacts.innerHTML = ''; // sem colunas específicas (se quiser, podemos tentar separar tel/email/site por regex)
+    } else {
+      info.innerHTML = '<em>Distribuidor não informado.</em>';
+      contacts.innerHTML = '';
+    }
+  }
+
+  // ===== Boot =====
+  (function boot(){
+    const pais = getParam('pais');
+    if(!pais){ location.href = 'index.html'; return; }
+    document.getElementById('homeLink').href = 'index.html';
+
+    try{
+      const prodRows = loadCSVInline('csv-produtos');
+      const distRows = loadCSVInline('csv-distribuidores');
+
+      const model = mapProdutos(prodRows);
+      const lista = produtosParaPais(model, pais);
+      const dist = distribuidorPorPais(distRows, pais);
+
+      renderDistribuidor(pais, dist);
+      renderProdutos(lista);
+    }catch(err){
+      console.error(err);
+      document.getElementById('produtosGrid').innerHTML =
+        '<div style="grid-column:1/-1;color:#b00020">Erro ao carregar dados embutidos.</div>';
+    }
+  })();
+</script>
+</body>
+<footer></footer>
+</html>
