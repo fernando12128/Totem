@@ -4,11 +4,11 @@
 }
 
     header{
-        padding: 30px;
-        font-size: 30px;
+        padding: 80px;
+        font-size: 600%;
         color: white;
         text-align: center;
-        background-color: green;
+        background-color: #00583A;
     }
 
     #bunnerInicial{
@@ -16,20 +16,23 @@
     }
 
     .Princio h1{
+        margin-top: 4%;
         color: rgb(0, 65, 0);
-        font-size: 60px;
+        font-size: 800%;
         font-weight: bold;
     }
 
     .Princio p{
+        margin-bottom: 4%;
         color: green;
-        font-size: 40px;
+        font-size: 500%;
     }
 
     body {
       font-family: Arial, sans-serif;
       text-align: center;
       background: #f9f9f9;
+      
     }
 
     h1 {
@@ -39,10 +42,11 @@
     .grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr); /* 3 colunas */
-      gap: 20px;
+      gap: 70px;
       padding: 20px;
       max-width: 900px;
       margin: auto;
+      justify-content: center;
     }
 
     .card {
@@ -52,30 +56,31 @@
     }
 
     .card:hover {
-      transform: scale(1.05);
+      transform: scale(1.15);
     }
 
     .card img {
-      width: 257px;
-      height: 171px;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      width: 26vw;
+      height: 17vw;
+      border-radius: 38px;
+      box-shadow: 0 8px 26px rgba(0,0,0,0.7);
     }
 
     .imagemvet img{
-      width: 100%;
+      width: 100vw;
 
     }
 
     .card p {
       margin-top: 10px;
       font-weight: bold;
-      font-size: 17px;
-      color: green;
+      font-size: 250%;
+      color: rgb(0, 94, 0);
       
     }
 
     footer{
-        height: 50px;
-        background-color: rgb(0, 87, 0);
+        bottom: 0;
+        height: 130px;
+        background-color: #00583A;
     }
