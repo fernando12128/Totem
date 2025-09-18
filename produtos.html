@@ -9,23 +9,30 @@
       
         header{
             padding: 50px;
-            font-size: 10vw;
-            color: white;
             background-color: #00583A;
             box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: space-between;
         }
 
         body {
             font-family: Arial, sans-serif;
             background: #f9f9f9;
-
-            
         }
 
         main{
             text-align: center;
 
           
+        }
+
+        #logo{
+            height: 7vh;
+        }
+
+        #home{
+          margin-top: 1vh;
+          height: 4vh;
         }
 
         .Nome{
@@ -39,12 +46,11 @@
         }
 
         .Nome h1{
-            font-size: 900%;
+            font-size: 3vh;
         }
 
         .Nome p{
-            font-size: 500%;
-            padding-left: 10px;
+            font-size: 3vh;
         }
 
         .fotos{
@@ -57,8 +63,8 @@
         }
 
         .fotos img{
-            margin-top: 2%;
-  
+        
+            width: 22vh;
         }
 
         .discricao{
@@ -94,8 +100,15 @@
 </head>
 <body>
     <header>
-        <p>Vetnil</p>
-    </header>
+        <img id="logo" src="images/IMGS_PARA_BANNER/vetnil Logo.png" alt="">
+        <div>
+          <button onclick="history.back()" style="background: none; border: none; cursor: pointer; color: white; font-size: 4vw; margin-bottom: 40px;" title="Voltar">
+                    <img id="home" src="images/IMGS_PARA_BANNER/Arrow.png" alt="">
+              </button>
+          <a id="homeLink" href="index.html" class="home-icon" title="Voltar ao início"><img id="home" src="images/IMGS_PARA_BANNER/home.png" alt=""></a>
+        </div>
+    
+      </header>
     <main>
         <div class="Nome">
             <h1 id="nomeProduto">Cal-d-mix</h1>

@@ -4,11 +4,12 @@
 }
 
     header{
-        padding: 80px;
-        font-size: 600%;
-        color: white;
         text-align: center;
         background-color: #00583A;
+    }
+
+    .logo{
+      width: 10vh;
     }
 
     #bunnerInicial{
@@ -85,7 +86,6 @@
 
     footer{
       position: absolute; 
-      bottom: 0; 
       left: 0; 
       width: 100%; 
       height: 80px; 
