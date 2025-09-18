@@ -18,6 +18,7 @@
 
     /* Cabeçalho */
     header {
+      height: 5vh;
       background-color: #006d4f;
       color: white;
       padding: 15px 30px;
@@ -31,7 +32,7 @@
     }
 
     .logo {
-      font-size: 26px;
+      font-size: 2vh;
       font-weight: bold;
     }
 
@@ -50,37 +51,40 @@
     }
 
     .distr{
+        height: 10vh;
         padding-top: 20px;
         padding-bottom: 20px;
         color: white;
-        background-color: green;
+        background-color: #009b6f;
     }
 
     .distr h3{
-        font-size: 29px;
+        font-size: 1.8vh;
         padding-left: 2.5vh;
         font-weight: bold;
         padding-bottom: 15px;
     }
 
-    .distribuidorInfo {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+.distribuidorInfo {
+    display: flex;
+    justify-content: space-between; /* Agora isso vai funcionar! */
+    align-items: flex-start; /* Adicione isso para alinhar os dois blocos no topo */
+    padding: 0 2.5vh; /* Adicione um padding para não colar nas bordas */
+}
 
+        .distribuidorInfo div{
+        font-size: 1vw
+    }
     
     .info {
-      font-size: 17px;
-      
+      font-size: 2vw
     }
 
-    .contatos {
-      margin-left: 50px;
-      text-align: right;
-      font-size: 15px;
-      
-    }
+.contatos {
+    font-size: 2vw;
+    /* margin-left: 50px; */ /* <--- REMOVA ISSO */
+    text-align: left; /* Pode ser útil alinhar o texto dos contatos */
+}
 
     /* Ícone Home */
     .home-icon {
@@ -148,19 +152,30 @@
       <div class="distribuidor">
         <div class="distribuidorBandeira">
           <img id="flagImg" src="" alt="Bandeira" />
-        </div>
-        <div class="distribuidorInfo">
-          <div class="info" id="distInfo"></div>
-          <div class="contatos" id="distContacts"></div>
-        </div>
+        </div><!-- fim distribuidorBandeira-->
+        
+      <div class="distribuidorInfo">
+          <div class="info">
+              <div id="dist"></div>
+              <div id="distRazaoSocial"></div>
+              <div id="distEndereco"></div>
+          </div>
+
+          <div class="contatos">
+              <div id="distTelefone"></div>
+              <div id="distEmail"></div>
+              <div id="distSite"></div>
+          </div>
       </div>
+
+      </div><!-- fim distribuidor-->
     </div>
 
     <!-- Grid dinâmica de produtos -->
     <div id="produtosGrid" class="produtos"></div>
   </main>
 
-  <footer></footer>
+
 
   <!-- ===== COLE AQUI O CSV DE PRODUTOS =====
        Cabeçalho: Produto,<País1>,<País2>,...
@@ -220,140 +235,21 @@
        Colunas suportadas: Pais,Nome,RazaoSocial,Endereco,Telefone,Email,Site,Bandeira
        (as que não tiver, deixe vazias). -->
   <script id="csv-distribuidores" type="text/plain">
-PAÍSES E DISTRIDUIDORES;;
-;;
-PAÍS;IDIOMA;DISTRIBUIDOR
-Mexico;Espanhol;"MEDERILAB
-Razão Social: MEDERI LAB S.A.P.I. de C.V.
+País;Distribuidor;Razão Social;Endereço;Telefone;Email;Site
+Mexico;MEDERILAB;MEDERI LAB S.A.P.I. de C.V.;Puerto Yavaros, #2751 , Col. Miramar , Col. Miramar, Zapopan Jalisco - Mexico;+52 10-28-36-76;direccion@mederilab.com;http://www.mederilab.com
+Chile;GABRICA;GABRICA CHILE LTDA;Av Lautaro, 301 , Bodega 02 , Quilicura, Santiago - Chile;+562 366 1163;direccion@gabrica.cl;http://www.gabrica.cl
+Peru;INVETSA;INVERSIONES VETERINÁRIAS S.A.;Av. Del Pinar, 180 , Oficina 1101 , Chacarilla, Lima - Peru;+511 617 5353;yysa@invetsa.com;http://www.invetsa.com
+Uruguay;SADENIR;SADENIR S.A. IMPORTÁCION Y DISTRIBUCIÓN;Av. Aerosur, Manzana, 50 , Solar 24 , San José de Carrasco, Canelones - Uruguay;+598 2682 3312;info@sadenir.com.uy;http://www.sadenir.com.uy
+Colombia;GABRICA;GABRICA S.A.S.;Calle 164, 15-29 , Toberin, Bogotá - Colombia;+571 519 0040 - +571 668 4444;serviciocliente@gabrica.com.co;http://www.gabrica.com
+Paraguay;AGROVETERINARIA CENTRAL S.R.L;AGROVETERINARIA CENTRAL S.R.L;Av. Gaspar Rodrigues de Francia entra Av Peru y Pai Perez, Paraguai - Paraguay;+595 0982319879;gerencia@agroveterinariacentral.com.py;https://m.facebook.com/pg/agrovetcentralpy/community/
+Costa Rica;AGEAGRO;AGENTES AGROVETERINÁRIOS;San Isidro de Coronado, 600 metros nor , Vazquez de Coronado, San Jose - Costa Rica;+506 2294 6821;danielalpizar@ageagro.com;http://www.ageagro.com
+Panama;REFARMIL;REFARMIL EXPORT & IMPORT S/A;CL 15 Rio Abajo, - , Rio Abajo, Panamá - Panama;+507 224 8225;goperaciones@refarmil.com;http://www.refarmil.com
+Ecuador;ILIANZA S.A.;ILIANZA S.A.;Jose Maria Velasco Ibarra, - , Guayaquil, Equador - Ecuador, CEP: 090615;+593 99 962 7512;rcaputim@ilianza.com;https://ilianza.com/
+Bolivia;MULTIAGRO;MULTIAGRO SERVICIOS AGROP. Y VETERINARIOS LTDA;Av. Piraí, 462 , Urbari, Santa Cruz - Bolivia;+591 3 353 5060;multiagro@cotas.com.bo;http://www.multiagro.com.bo
+Dominican Republic;HVAH - Arroyo Hondo;HOSPITAL VETERINARIO ARROYO HONDO;C. Euclides Morillo, 76 , Arroyo Hondo, Santo Domingo - Dominican Republic;+809 412 2042;mmallen@hvahrd.com;http://www.vetarroyohondo.com
+Slovenia;BTL;BTL MARKETING D.O.O.;Zaloznikova ulica, 43 , 1351 Brezovica pri Ljubljani , Brezovica pri, Slovenia - Slovenia;+386 1 365 7810;damjana@btl-m.si;http://www.petshop.si
+United Arab Emirates;GULF RIDER;GULF RIDER VETERINARY MEDICINE & EQUIPMENT TRADING;Al Qusais , 3 , P.O. Box 20629 , Industrial Area, Dubai - United Arab Emirates;+971 4 2675881;fisal@gulfrider.com;http://www.gulfrider.com
 
-Puerto Yavaros, #2751 , Col. Miramar , Col. Miramar
-Zapopan Jalisco - Mexico
-
-+52 10-28-36-76
-
-direccion@mederilab.com
-http://www.mederilab.com"
-Chile;Espanhol;"GABRICA
-Razão Social: GABRICA CHILE LTDA
-
-Av Lautaro, 301 , Bodega 02 , Quilicura
-Santiago - Chile
-
-+562 366 1163
-
-direccion@gabrica.cl
-http://www.gabrica.cl"
-Peru;Espanhol;"INVETSA
-Razão Social: INVERSIONES VETERINÁRIAS S.A.
-
-Av. Del Pinar, 180 , Oficina 1101 , Chacarilla
-Lima - Peru
-
-+511 617 5353
-
-yysa@invetsa.com
-http://www.invetsa.com"
-Uruguay;Espanhol;"SADENIR
-Razão Social: SADENIR S.A. IMPORTÁCION Y DISTRIBUCIÓN
-
-Av. Aerosur, Manzana, 50 , Solar 24 , San José de Carrasco
-Canelones - Uruguay
-
-+598 2682 3312
-
-info@sadenir.com.uy
-http://www.sadenir.com.uy"
-Colombia;Espanhol;"GABRICA
-Razão Social: GABRICA S.A.S.
-
-Calle 164, 15-29 , Toberin
-Bogotá - Colombia
-
-+571 519 0040 - +571 668 4444
-
-serviciocliente@gabrica.com.co
-http://www.gabrica.com"
-Paraguay;Espanhol;"AGROVETERINARIA CENTRAL S.R.L
-Razão Social: AGROVETERINARIA CENTRAL S.R.L
-
-Av. Gaspar Rodrigues de Francia entra Av Peru y Pai Perez
-Paraguai - Paraguay
-
-+595 0982319879
-
-gerencia@agroveterinariacentral.com.py
-https://m.facebook.com/pg/agrovetcentralpy/community/"
-Costa Rica;Espanhol;"AGEAGRO
-Razão Social: AGENTES AGROVETERINÁRIOS
-
-San Isidro de Coronado, 600 metros nor , Vazquez de Coronado
-San Jose - Costa Rica
-
-+506 2294 6821
-
-danielalpizar@ageagro.com
-http://www.ageagro.com"
-Panama;Espanhol;"REFARMIL
-Razão Social: REFARMIL EXPORT & IMPORT S/A
-
-CL 15 Rio Abajo, - , Rio Abajo
-Panamá - Panama
-
-+507 224 8225
-
-goperaciones@refarmil.com
-http://www.refarmil.com"
-Ecuador;Espanhol;"ILIANZA S.A.
-Razão Social: ILIANZA S.A.
-
-Jose Maria Velasco Ibarra, - , Guayaquil
-Equador - Ecuador
-CEP: 090615
-
-+593 99 962 7512
-
-rcaputim@ilianza.com
-https://ilianza.com/"
-Bolivia;Espanhol;"MULTIAGRO
-Razão Social: MULTIAGRO SERVICIOS AGROP. Y VETERINARIOS LTDA
-
-Av. Piraí, 462 , Urbari
-Santa Cruz - Bolivia
-
-+591 3 353 5060
-
-multiagro@cotas.com.bo
-http://www.multiagro.com.bo"
-Dominican Republic;Espanhol;"HVAH - Arroyo Hondo
-Razão Social: HOSPITAL VETERINARIO ARROYO HONDO
-
-C. Euclides Morillo, 76 , Arroyo Hondo
-Santo Domingo - Dominican Republic
-
-+809 412 2042
-
-mmallen@hvahrd.com
-http://www.vetarroyohondo.com"
-Slovenia;Inglês;"BTL
-Razão Social: BTL MARKETING D.O.O.
-
-Zaloznikova ulica, 43 , 1351 Brezovica pri Ljubljani , Brezovica pri
-Slovenia - Slovenia
-
-+386 1 365 7810
-
-damjana@btl-m.si
-http://www.petshop.si"
-United Arab Emirates;Inglês;"GULF RIDER
-Razão Social: GULF RIDER VETERINARY MEDICINE & EQUIPMENT TRADING
-
-Al Qusais , 3 , P.O. Box 20629 , Industrial Area
-Dubai - United Arab Emirates
-
-+971 4 2675881
-
-fisal@gulfrider.com
-http://www.gulfrider.com"
   </script>
 
   <script>
@@ -497,53 +393,72 @@ function renderProdutos(lista){
 
   // ===== Distribuidor =====
   // Seu CSV: "PAÍS;IDIOMA;DISTRIBUIDOR" (todo conteúdo em uma única coluna)
-  function findDistHeaderIndex(rows){
-    for(let i=0;i<rows.length;i++){
-      const r = rows[i].map(c => (c||'').normalize('NFD').replace(/\p{Diacritic}/gu,'').toUpperCase());
-      if(r[0]==='PAIS' && r[1]==='IDIOMA' && r[2]==='DISTRIBUIDOR') return i;
-    }
-    return -1;
-  }
-
-  function distribuidorPorPais(rows, pais){
-    const hIdx = findDistHeaderIndex(rows);
-    if(hIdx < 0) return null;
-    const head = rows[hIdx]; // [PAÍS, IDIOMA, DISTRIBUIDOR]
-    const data = rows.slice(hIdx+1);
-    // procura linha do país (comparação exata)
-    const row = data.find(r => (r[0]||'') === pais);
-    if(!row) return null;
-    const texto = row[2] || ''; // bloco multilinha
-    return { pais, bloco: texto };
-  }
-
-  function formatDistribuidorBloco(bloco){
-    // Converte quebras de linha em <br>, e destaca "Razão Social:" se existir
-    const esc = (s)=>s.replace(/[&<>]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[m]));
-    const html = esc(bloco).replace(/\r?\n\r?\n/g,'<br><br>').replace(/\r?\n/g,'<br>');
-    return html.replace(/Raz[aã]o Social:/i, '<strong>Razão Social:</strong>');
-  }
-
-  function renderDistribuidor(pais, d){
-    document.title = `Produtos — ${pais}`;
-    const info = document.getElementById('distInfo');
-    const contacts = document.getElementById('distContacts');
-    const flag = document.getElementById('flagImg');
-
-    // Tenta bandeira padrão por nome do país (ajuste o caminho conforme sua pasta)
-    const fallbackFlag = `./images/bandeiras/${encodeURIComponent(pais)}.png`;
-    flag.src = fallbackFlag;
-    flag.alt = `Bandeira de ${pais}`;
-
-    if(d && d.bloco){
-      // separa bloco em duas colunas de forma simples: tudo no "info"
-      info.innerHTML = formatDistribuidorBloco(d.bloco);
-      contacts.innerHTML = ''; // sem colunas específicas (se quiser, podemos tentar separar tel/email/site por regex)
-    } else {
-      info.innerHTML = '<em>Distribuidor não informado.</em>';
-      contacts.innerHTML = '';
+ function findDistHeader(rows){
+  const norm = s => (s||'').normalize('NFD').replace(/\p{Diacritic}/gu,'').toUpperCase();
+  for (let i = 0; i < rows.length; i++) {
+    const H = rows[i].map(norm);
+    const idx = {
+      pais:        H.indexOf('PAIS'),
+      dist:        H.indexOf('DISTRIBUIDOR'),
+      razao:       H.indexOf('RAZAO SOCIAL'),
+      endereco:    H.indexOf('ENDERECO'),
+      telefone:    H.indexOf('TELEFONE'),
+      email:       H.indexOf('EMAIL'),
+      site:        H.indexOf('SITE'),
+    };
+    if (idx.pais >= 0 && idx.dist >= 0) {
+      return { row: i, idx };
     }
   }
+  return null;
+}
+
+function distribuidorPorPais(rows, pais){
+  const found = findDistHeader(rows);
+  if (!found) return null;
+  const { row, idx } = found;
+  const data = rows.slice(row + 1);
+  const r = data.find(line => (line[idx.pais] || '') === pais);
+  if (!r) return null;
+  return {
+    pais,
+    nome:      r[idx.dist]      || '',
+    razao:     idx.razao    >=0 ? (r[idx.razao]    || '') : '',
+    endereco:  idx.endereco >=0 ? (r[idx.endereco] || '') : '',
+    telefone:  idx.telefone >=0 ? (r[idx.telefone] || '') : '',
+    email:     idx.email    >=0 ? (r[idx.email]    || '') : '',
+    site:      idx.site     >=0 ? (r[idx.site]     || '') : ''
+  };
+}
+
+function renderDistribuidor(pais, d){
+  document.title = `Produtos — ${pais}`;
+  const flag = document.getElementById('flagImg');
+  const fallbackFlag = `./images/bandeiras/${encodeURIComponent(pais)}.png`;
+  flag.src = fallbackFlag;
+  flag.alt = `Bandeira de ${pais}`;
+
+  // limpa
+  const set = (id, html) => { const el = document.getElementById(id); if (el) el.innerHTML = html || ''; };
+
+  if (d) {
+    set('distPais', `<p><strong>${d.pais}</strong></p>`);
+    set('dist', d.nome ? `<p>${d.nome}</p>` : '');
+    set('distRazaoSocial', d.razao ? `<p>${d.razao}</p>` : '');
+    set('distEndereco', d.endereco ? `<p>${d.endereco}</p>` : '');
+    set('distTelefone', d.telefone ? `<p>${d.telefone}</p>` : '');
+    set('distEmail', d.email ? `<p><a href="mailto:${d.email}" style="color:#fff">${d.email}</a></p>` : '');
+    set('distSite', d.site ? `<p><a href="${d.site}" target="_blank" rel="noopener" style="color:#fff">${d.site}</a></p>` : '');
+  } else {
+    set('distPais', `<p><strong>${pais}</strong></p>`);
+    set('dist', '<em>Distribuidor não informado.</em>');
+    set('distRazaoSocial','');
+    set('distEndereco','');
+    set('distTelefone','');
+    set('distEmail','');
+    set('distSite','');
+  }
+}
 
   // ===== Boot =====
   (function boot(){
