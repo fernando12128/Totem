@@ -36,12 +36,17 @@
       font-weight: bold;
     }
 
-    .distribuidor {
-      display: flex;
-      justify-content: center;
-      gap: 31px;
-      
-    }
+.distribuidor {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;          /* Garante o alinhamento vertical centralizado */
+  padding: 0 2.5vh;             /* Espaçamento nas laterais */
+  gap: 20px;                    /* Adiciona um espaço mínimo entre os elementos */
+}
+
+.distribuidorBandeira {
+  flex-shrink: 0; /* Evita que a bandeira encolha */
+}
 
     .distribuidor img {
       border-radius: 14px;
@@ -65,26 +70,33 @@
         padding-bottom: 15px;
     }
 
-.distribuidorInfo {
-    display: flex;
-    justify-content: space-between; /* Agora isso vai funcionar! */
-    align-items: flex-start; /* Adicione isso para alinhar os dois blocos no topo */
-    padding: 0 2.5vh; /* Adicione um padding para não colar nas bordas */
+
+
+    
+.info p, .contatos p, .info a, .contatos a {
+  /* Usando clamp() para uma fonte responsiva e controlada */
+  /* Mínimo 14px, preferencial 1.2vw, máximo 22px */
+  font-size: 1.5vw;
+  line-height: 1.5; /* Melhora a legibilidade */
+  color: white; /* Garante que os links fiquem brancos também */
+  margin: 2px 0; /* Pequeno espaçamento vertical entre as linhas de texto */
 }
 
-        .distribuidorInfo div{
-        font-size: 1vw
-    }
-    
+
     .info {
-      font-size: 2vw
-    }
+  flex-grow: 1;                 /* Faz este bloco crescer para ocupar o espaço livre */
+  text-align: left;             /* Alinha o texto à esquerda dentro deste bloco */
+}
 
 .contatos {
-    font-size: 2vw;
-    /* margin-left: 50px; */ /* <--- REMOVA ISSO */
-    text-align: left; /* Pode ser útil alinhar o texto dos contatos */
+  flex-shrink: 0;               /* Evita que o bloco de contatos encolha e quebre linha */
+  text-align: right;            /* Alinha o texto à direita dentro deste bloco */
 }
+
+.contatos a {
+    text-decoration: none;
+}
+
 
     /* Ícone Home */
     .home-icon {
@@ -125,9 +137,11 @@
       margin: 0;
       color: #006d4f;
       font-weight: bold;
+      font-size: 1.2vh;
     }
 
-    .produto img{max-width:80%;max-height:60%;object-fit:contain;margin-bottom:8px}
+
+    .produto img{max-width:80vw;max-height:25vw;object-fit:contain;margin-bottom:8px}
 
     footer{
         height: 50px;
@@ -150,11 +164,10 @@
       <h3>Distribuidor:</h3>
 
       <div class="distribuidor">
-        <div class="distribuidorBandeira">
-          <img id="flagImg" src="" alt="Bandeira" />
-        </div><!-- fim distribuidorBandeira-->
-        
-      <div class="distribuidorInfo">
+          <div class="distribuidorBandeira">
+              <img id="flagImg" src="" alt="Bandeira" />
+          </div>
+          
           <div class="info">
               <div id="dist"></div>
               <div id="distRazaoSocial"></div>
@@ -167,8 +180,6 @@
               <div id="distSite"></div>
           </div>
       </div>
-
-      </div><!-- fim distribuidor-->
     </div>
 
     <!-- Grid dinâmica de produtos -->
