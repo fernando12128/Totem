@@ -5,7 +5,10 @@
 
 /* desktop: mantém o hover existente */
 @media (hover: hover) {
-  .pressable:hover { transform: scale(1.18); box-shadow: 0 10px 22px rgba(0,0,0,.28); }
+  .pressable:hover { 
+    transform: scale(1.18);
+    /* box-shadow: 0 10px 22px rgba(0,0,0,.28); */
+   }
 }
 
 /* touch: mesmo visual do hover quando ativo */
