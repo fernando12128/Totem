@@ -8,67 +8,74 @@
     <style>
       * {
         margin: 0;
-      }
 
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        background-color: #f5f5f5;
-      }
+    }
+    
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 
-      /* Cabeçalho */
-      header {
-        height: 5vh;
-        background-color: #00583a;
-        color: white;
-        padding: 15px 30px;
-      }
+    }
 
-      #home {
-        margin-top: 0.5vh;
-        margin-right: 0.5vh;
-        height: 3vh;
-      }
+    /* Cabeçalho */
+    header {
+      height: 5vh;
+      background-color: #00583A;
+      color: white;
+      padding: 15px 30px;
+    }
 
-      .header-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        flex-wrap: wrap;
-      }
+    #home{
+      margin-top: 0.5vh;
+      margin-right: 0.5vh;
+      height: 3vh;
+    }
 
-      .logo {
-        font-size: 2vh;
-        font-weight: bold;
-      }
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
 
-      .home-icon {
-        height: 3vh;
-        margin-top: 0.5vh;
-        margin-right: 0.5vh;
-        display: block;
-      }
+    .logo {
+      font-size: 2vh;
+      font-weight: bold;
+    }
 
-      .distribuidor {
-        display: flex;
-        justify-content: space-between;
-        align-items: center; /* Garante o alinhamento vertical centralizado */
-        padding: 0 2.5vh; /* Espaçamento nas laterais */
-        gap: 20px; /* Adiciona um espaço mínimo entre os elementos */
-      }
+    .home-icon {
+      height: 3vh;
+      margin-top: .5vh;
+      margin-right: .5vh;
+      display: block;
+    }
 
-      .distribuidorBandeira {
-        flex-shrink: 0; /* Evita que a bandeira encolha */
-      }
+.distribuidor {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;          /* Garante o alinhamento vertical centralizado */
+  padding: 0 2.5vh;             /* Espaçamento nas laterais */
+  gap: 20px;                    /* Adiciona um espaço mínimo entre os elementos */
+}
 
-      .distribuidor img {
-        border-radius: 14px;
-        width: 8vh;
-        height: 5vh;
-        border: 4px solid white;
-      }
+.distribuidorBandeira {
+  flex-shrink: 0; /* Evita que a bandeira encolha */
+}
+
+    .distribuidor img {
+      border-radius: 14px;
+      width: 8vh;
+      height: 5vh;
+      border: 4px solid white;
+    }
+     
 
       .distr {
+
         height: 10vh;
         padding-top: 20px;
         padding-bottom: 20px;
@@ -81,79 +88,79 @@
         padding-left: 2.5vh;
         font-weight: bold;
         padding-bottom: 15px;
-      }
+    }
 
-      .info p,
-      .contatos p,
-      .info a,
-      .contatos a {
-        /* Usando clamp() para uma fonte responsiva e controlada */
-        /* Mínimo 14px, preferencial 1.2vw, máximo 22px */
-        font-size: 1.5vw;
-        line-height: 1.5; /* Melhora a legibilidade */
-        color: white; /* Garante que os links fiquem brancos também */
-        margin: 2px 0; /* Pequeno espaçamento vertical entre as linhas de texto */
-      }
+    
+.info p, .contatos p, .info a, .contatos a {
+  /* Usando clamp() para uma fonte responsiva e controlada */
+  /* Mínimo 14px, preferencial 1.2vw, máximo 22px */
+  font-size: 1.5vw;
+  line-height: 1.5; /* Melhora a legibilidade */
+  color: white; /* Garante que os links fiquem brancos também */
+  margin: 2px 0; /* Pequeno espaçamento vertical entre as linhas de texto */
+}
 
-      .info .brPromo {
-        font-weight: 800;
-        font-size: clamp(28px, 3.4vw, 56px);
-        line-height: 1.25;
-        color: #fff;
-      }
+.info .brPromo{
+      font-weight: 800;
+      font-size: clamp(28px, 3.4vw, 56px);
+      line-height: 1.25;
+      color: #fff;
+    }
 
-      .info {
-        flex-grow: 1; /* Faz este bloco crescer para ocupar o espaço livre */
-        text-align: left; /* Alinha o texto à esquerda dentro deste bloco */
-      }
 
-      .contatos {
-        flex-shrink: 0; /* Evita que o bloco de contatos encolha e quebre linha */
-        text-align: right; /* Alinha o texto à direita dentro deste bloco */
-      }
+    .info {
+  flex-grow: 1;                 /* Faz este bloco crescer para ocupar o espaço livre */
+  text-align: left;             /* Alinha o texto à esquerda dentro deste bloco */
+}
 
-      .contatos a {
-        text-decoration: none;
-      }
+.contatos {
+  flex-shrink: 0;               /* Evita que o bloco de contatos encolha e quebre linha */
+  text-align: right;            /* Alinha o texto à direita dentro deste bloco */
+}
 
-      /* Grid de produtos */
-      .produtos {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-        padding: 30px;
-        width: 95vw;
-        margin: auto;
-      }
+.contatos a {
+    text-decoration: none;
+}
+main {
+    /* Adicione esta linha para empurrar o footer para baixo */
+    flex-grow: 1; 
+}
 
-      .produto {
-        background: white;
-        border-radius: 8px;
-        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        align-items: center;
-        height: 16vh;
-        padding: 10px;
-      }
 
-      .produto p {
-        margin: 0;
-        color: #006d4f;
-        font-weight: bold;
-        font-size: 1.2vh;
-      }
+    /* Grid de produtos */
+    .produtos {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      padding: 30px;
+      width: 95vw;
+      margin: auto;
+    }
 
-      .produto img {
-        max-width: 80vw;
-        max-height: 25vw;
-        object-fit: contain;
-        margin-bottom: 8px;
-      }
+    .produto {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      height: 16vh;
+      padding: 10px;
+    }
 
-      footer {
-        height: 50px;
+    .produto p {
+      margin: 0;
+      color: #006d4f;
+      font-weight: bold;
+      font-size: 1.2vh;
+    }
+
+
+    .produto img{max-width:80vw;max-height:25vw;object-fit:contain;margin-bottom:8px}
+
+    footer{
+        height: 80px; 
         background-color: rgb(0, 87, 0);
       }
 

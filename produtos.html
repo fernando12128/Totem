@@ -7,24 +7,32 @@
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="./effects.css" />
     <style>
-      header {
-        height: 5vh;
-        padding: 15px 30px;
-        background-color: #00583a;
-        /* box-shadow: 0 6px 18px rgba(0,0,0,0.35); */
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-      }
 
-      body {
-        font-family: Arial, sans-serif;
-        background: #f9f9f9;
-      }
+      
+        header{
+            height: 5vh;
+            padding: 15px 30px;
+            background-color: #00583A;
+            /* box-shadow: 0 6px 18px rgba(0,0,0,0.35); */
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
 
-      main {
-        text-align: center;
-      }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main{
+          text-align: center;
+          flex-grow: 1; 
+          
+        }
+
 
       #logo {
         height: 5.2vh;
@@ -85,37 +93,35 @@
         width: 22vh;
       }
 
-      .discricao {
-        text-align: left;
 
-        margin: 3vw 11vw 0 10vw;
-      }
-      .discricao h1 {
-        color: #00583a;
-        font-weight: bold;
-        font-size: 3vw;
-        margin-top: 4vw;
-      }
-      .discricao p {
-        color: #008055;
-        font-size: 2vw;
-        margin-top: 2vw;
-      }
-      .discricao h2 {
-        color: #008055;
-        font-size: 2vw;
-        margin-top: 2vw;
-      }
+        .discricao{
+            text-align: left;
+            
+            margin: 3vw 11vw 0 10vw;
+        }
+        .discricao h1{
+            color: #00583A;
+            font-weight: bold;
+            font-size: 3vw;
+            margin-top: 4vw;
+        }
+        .discricao p{
+            color: #008055;
+            font-size: 2vw;
+            margin-top: 2vw;
+        }
+        .discricao h2{
+            color: #008055;
+            font-size: 2vw;
+            margin-top: 2vw;
+        }
+        
 
-      footer {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 80px;
-
-        background-color: #006400;
-      }
+        footer{        
+                width: 100%; 
+                height: 80px; 
+                background-color: #006400;
+        }
 
       /* 1) Garanta que a página possa rolar verticalmente */
       html,
@@ -149,6 +155,7 @@
       *:not(input):not(textarea) {
         touch-action: pan-y !important;
       }
+
     </style>
   </head>
   <body>
