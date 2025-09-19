@@ -84,8 +84,6 @@
         padding-bottom: 15px;
     }
 
-
-
     
 .info p, .contatos p, .info a, .contatos a {
   /* Usando clamp() para uma fonte responsiva e controlada */
@@ -95,6 +93,13 @@
   color: white; /* Garante que os links fiquem brancos também */
   margin: 2px 0; /* Pequeno espaçamento vertical entre as linhas de texto */
 }
+
+.info .brPromo{
+      font-weight: 800;
+      font-size: clamp(28px, 3.4vw, 56px);
+      line-height: 1.25;
+      color: #fff;
+    }
 
 
     .info {
@@ -164,7 +169,7 @@
   <main>
     <!-- Distribuidor -->
     <div class="distr">
-      <h3>Distribuidor:</h3>
+      <h3 id="distrTitulo">Distribuidor:</h3>
 
       <div class="distribuidor">
           <div class="distribuidorBandeira">
@@ -483,15 +488,18 @@ function distribuidorPorPais(rows, pais){
 function renderDistribuidor(pais, d){
   document.title = `Produtos — ${pais}`;
   setFlagImage(pais);
-  // const flag = document.getElementById('flagImg');
-  // const fallbackFlag = `./images/Bandeiras Paises/${encodeURIComponent(pais)}.png`;
-  // flag.src = fallbackFlag;
-  // flag.alt = `Bandeira de ${pais}`;
 
-  // limpa
-  const set = (id, html) => { const el = document.getElementById(id); if (el) el.innerHTML = html || ''; };
+  const set = (id, html) => {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = html || '';
+  };
+
+  const contatosEl = document.querySelector('.contatos');
+  const tituloEl   = document.getElementById('distrTitulo');
+  const isBR = (pais === 'Brazil' || pais === 'Brasil');
 
   if (d) {
+    // País com distribuidor (mantém comportamento normal)
     set('distPais', `<p><strong>${d.pais}</strong></p>`);
     set('dist', d.nome ? `<p>${d.nome}</p>` : '');
     set('distRazaoSocial', d.razao ? `<p>${d.razao}</p>` : '');
@@ -499,14 +507,27 @@ function renderDistribuidor(pais, d){
     set('distTelefone', d.telefone ? `<p>${d.telefone}</p>` : '');
     set('distEmail', d.email ? `<p><a href="mailto:${d.email}" style="color:#fff">${d.email}</a></p>` : '');
     set('distSite', d.site ? `<p><a href="${d.site}" target="_blank" rel="noopener" style="color:#fff">${d.site}</a></p>` : '');
+    if (contatosEl) contatosEl.style.display = ''; // mostra contatos
   } else {
+    // Sem distribuidor: caso especial para Brasil
     set('distPais', `<p><strong>${pais}</strong></p>`);
-    set('dist', '<em>Distribuidor não informado.</em>');
+    set(
+      'dist',
+      isBR
+        ? `<p class="brPromo">Conheça os últimos lançamentos Vetnil® para a linha Pet!</p>`
+        : `<em>Distribuidor não informado.</em>`
+    );
+
+    // limpa campos restantes
     set('distRazaoSocial','');
     set('distEndereco','');
     set('distTelefone','');
     set('distEmail','');
     set('distSite','');
+
+    // para o Brasil, some com a coluna de contatos (fica só o texto ao lado da bandeira)
+    if (contatosEl) contatosEl.style.display = isBR ? 'none' : '';
+    if(tituloEl) tituloEl.style.display = isBR ? 'none' : '';
   }
 }
 
