@@ -5,15 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="./effects.css">
     <style>
       
         header{
-            padding: 50px;
-            background-color: #00583A;
-            box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.8);
-            display: flex;
-            justify-content: space-between;
-        }
+  height: 5vh;
+  padding: 15px 30px;
+  background-color: #00583A;
+  /* box-shadow: 0 6px 18px rgba(0,0,0,0.35); */
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
 
         body {
             font-family: Arial, sans-serif;
@@ -27,12 +30,29 @@
         }
 
         #logo{
-            height: 7vh;
+            height: 5.2vh;
         }
 
-        #home{
-          margin-top: 1vh;
-          height: 4vh;
+        .nav-icon, .home-icon{
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          height: 3vh;
+          width: 3vh;
+          padding: 0;
+          margin-top: .5vh;
+          margin-right: .5vh;
+          border: 0;
+          background: none;
+          cursor: pointer;
+          text-decoration: none;
+          color: inherit;
+        }
+
+        .nav-icon img, .home-icon img{
+          height: 100%;
+          width: auto;
+          pointer-events: none;
         }
 
         .Nome{
@@ -102,10 +122,12 @@
     <header>
         <img id="logo" src="images/IMGS_PARA_BANNER/vetnil Logo.png" alt="">
         <div>
-          <button onclick="history.back()" style="background: none; border: none; cursor: pointer; color: white; font-size: 4vw; margin-bottom: 40px;" title="Voltar">
-                    <img id="home" src="images/IMGS_PARA_BANNER/Arrow.png" alt="">
-              </button>
-          <a id="homeLink" href="index.html" class="home-icon" title="Voltar ao início"><img id="home" src="images/IMGS_PARA_BANNER/home.png" alt=""></a>
+          <a id="backBtn" title="Voltar" class="nav-icon">
+            <img id="backButton" src="images/IMGS_PARA_BANNER/Arrow.png" alt="">
+          </a>
+          <a id="homeLink" href="index.html" class="home-icon" title="Voltar ao início">
+            <img id="homeIcon" class="homeImg" src="images/IMGS_PARA_BANNER/home.png" alt="">
+          </a>
         </div>
     
       </header>
@@ -984,11 +1006,10 @@ United Arab Emirates;Inglês
 <p>Frasco com 20 mL.</p>
 </script>
 
-
-
-
     <script>
-
+      window.addEventListener('DOMContentLoaded', () => {
+        
+      
         const PRODUCT_IMG = {
   // Exemplo:
   // 'Glicopan Pet': './images/produtos/glicopan-pet/glicopan-pet.png',
@@ -1041,7 +1062,15 @@ United Arab Emirates;Inglês
 
 
 // ==== utilidades ====
-  function getParam(name){ return new URL(location.href).searchParams.get(name); }
+  function getParam(name){
+  // 1) query string normal ?a=b
+  const q = new URL(location.href).searchParams.get(name);
+  if (q) return q;
+
+  // 2) hash params #a=b&c=d
+  const hash = location.hash ? new URLSearchParams(location.hash.replace(/^#/, '')) : null;
+  return hash ? hash.get(name) : null;
+}
   const norm = s => (s||'').normalize('NFD').replace(/\p{Diacritic}/gu,'').toUpperCase();
 
   function parseCSV(text){
@@ -1115,9 +1144,24 @@ United Arab Emirates;Inglês
 
   (function bootProduto(){
     const pais   = getParam('pais') || '';
-    const slug   = getParam('produto') || '';
+    let slug   = getParam('produto') || '';
     const idioma = getIdiomaDoPais(pais);
     const sufixo = idiomaParaSufixo(idioma);
+
+    // Fallback 1: se não veio slug na URL, usa o título visível (#nomeProduto)
+  if (!slug) {
+    const tituloVisivel = document.getElementById('nomeProduto')?.textContent?.trim();
+    if (tituloVisivel) slug = slugify(tituloVisivel);
+  }
+
+  // Fallback 2: se ainda não tiver slug, mostra uma mensagem clara
+  if (!slug) {
+    document.getElementById('conteudoProduto').innerHTML =
+      `<h1>Selecione um produto</h1>
+       <p>Abra este arquivo com <code>#produto=&lt;slug&gt;&amp;pais=&lt;país&gt;</code><br>
+       Ex.: <code>produto.html#produto=cal-d-mix&amp;pais=Chile</code></p>`;
+    return;
+  }
 
     // carrega HTML do doc (com fallback p/ ES)
     let docId = `doc-${slug}-${sufixo}`;
@@ -1138,10 +1182,8 @@ United Arab Emirates;Inglês
     const h1Text = tmp.querySelector('h1')?.textContent?.trim();
 
     // título
-    const nome = document.getElementById('nomeProduto');
-    if (nome && slug){
-      nome.textContent = h1Text || guessNomeBonito(slug);
-    }
+  const nome = document.getElementById('nomeProduto');
+  if (nome) nome.textContent = h1Text || (slug.replace(/-/g,' '));
 
     // ===== escolha da imagem =====
     let imgPath = null;
@@ -1168,6 +1210,51 @@ United Arab Emirates;Inglês
       img.alt = h1Text || slug;
     }
   })();
+})
+</script>
+
+<script src="./pressFX.js"></script>
+<script>
+(function () {
+  // pega ?pais= ... ou #pais= ...
+  const getParam = (name) => {
+    const q = new URLSearchParams(location.search).get(name);
+    if (q) return q;
+    const h = location.hash ? new URLSearchParams(location.hash.slice(1)) : null;
+    return h ? h.get(name) : null;
+  };
+
+  const pais     = getParam('pais');
+  const homeHref = pais ? `index.html?pais=${encodeURIComponent(pais)}` : 'index.html';
+  const fallback = pais ? `Brasil.html?pais=${encodeURIComponent(pais)}` : 'index.html';
+
+  // home com ?pais=
+  const home = document.getElementById('homeLink');
+  if (home) home.href = homeHref;
+
+  // back com fallback garantido
+  const back = document.getElementById('backBtn');
+  if (back) back.setAttribute('href', fallback);
+
+  // efeito de press (se existir)
+  if (window.attachPressFX) attachPressFX('.nav-icon, .home-icon');
+
+  // clique do voltar
+  back?.addEventListener('click', function (e) {
+    e.preventDefault();
+    const delay = 280; // combine com a duração da sua animação
+
+    setTimeout(() => {
+      const ref = document.referrer || '';
+      // considera Brasil.html (ou pais.html, caso algum link antigo exista)
+      if ((ref.includes('Brasil.html') || ref.includes('pais.html')) && history.length > 1) {
+        history.back();
+      } else {
+        location.href = fallback;
+      }
+    }, delay);
+  });
+})();
 </script>
 </body>
 </html>

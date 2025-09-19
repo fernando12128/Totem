@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vetnil Produtos</title>
+  <link rel="stylesheet" href="./effects.css">
   <style>
 
     *{
@@ -40,6 +41,13 @@
     .logo {
       font-size: 2vh;
       font-weight: bold;
+    }
+
+    .home-icon {
+      height: 3vh;
+      margin-top: .5vh;
+      margin-right: .5vh;
+      display: block;
     }
 
 .distribuidor {
@@ -146,7 +154,9 @@
 <body>
   <header>
     <div class="header-container">
-      <div class="logo"> <img src="images/IMGS_PARA_BANNER/vetnil Logo.png" alt=""></div>
+      <div class="logo">
+        <img src="images/IMGS_PARA_BANNER/vetnil Logo.png" alt="">
+      </div>
       <a id="homeLink" href="index.html" class="home-icon" title="Voltar ao início"><img id="home" src="images/IMGS_PARA_BANNER/home.png" alt=""></a>
     </div>
   </header>
@@ -255,6 +265,8 @@ Slovenia;BTL;BTL MARKETING D.O.O.;Zaloznikova ulica, 43 , 1351 Brezovica pri Lju
 United Arab Emirates;GULF RIDER;GULF RIDER VETERINARY MEDICINE & EQUIPMENT TRADING;Al Qusais , 3 , P.O. Box 20629 , Industrial Area, Dubai - United Arab Emirates;+971 4 2675881;fisal@gulfrider.com;http://www.gulfrider.com
 
   </script>
+
+  <script src="./pressFX.js" defer></script>
 
   <script>
   // ===== Utils =====
@@ -558,11 +570,20 @@ function setFlagImage(pais){
   tryNext();
 }
 
+  (function setupNav(){
+    const params = new URL(location.href).searchParams;
+    const pais = params.get('pais');
+
+    const homeLink = document.getElementById('homeLink');
+    if (homeLink) homeLink.href = pais ? `index.html?pais=${encodeURIComponent(pais)}` : 'index.html';
+  })();  
+
   // ===== Boot =====
   (function boot(){
+    window.addEventListener('DOMContentLoaded', () => {
     const pais = getParam('pais');
     if(!pais){ location.href = 'index.html'; return; }
-    document.getElementById('homeLink').href = 'index.html';
+    // document.getElementById('homeLink').href = 'index.html';
 
     try{
       const prodRows = loadCSVInline('csv-produtos');
@@ -574,11 +595,15 @@ function setFlagImage(pais){
 
       renderDistribuidor(pais, dist);
       renderProdutos(lista);
+
+      // chama só se o arquivo já carregou mesmo
+      if (window.attachPressFX) attachPressFX('.produto, .home-icon');
     }catch(err){
       console.error(err);
       document.getElementById('produtosGrid').innerHTML =
         '<div style="grid-column:1/-1;color:#b00020">Erro ao carregar dados embutidos.</div>';
     }
+  });
   })();
 </script>
 </body>
