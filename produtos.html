@@ -1,69 +1,67 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="./effects.css">
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="./effects.css" />
     <style>
-      
-        header{
-  height: 5vh;
-  padding: 15px 30px;
-  background-color: #00583A;
-  /* box-shadow: 0 6px 18px rgba(0,0,0,0.35); */
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
+      header {
+        height: 5vh;
+        padding: 15px 30px;
+        background-color: #00583a;
+        /* box-shadow: 0 6px 18px rgba(0,0,0,0.35); */
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #f9f9f9;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        background: #f9f9f9;
+      }
 
-        main{
-            text-align: center;
+      main {
+        text-align: center;
+      }
 
-          
-        }
+      #logo {
+        height: 5.2vh;
+      }
 
-        #logo{
-            height: 5.2vh;
-        }
+      .nav-icon,
+      .home-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 3vh;
+        width: 3vh;
+        padding: 0;
+        margin-top: 0.5vh;
+        margin-right: 0.5vh;
+        border: 0;
+        background: none;
+        cursor: pointer;
+        text-decoration: none;
+        color: inherit;
+      }
 
-        .nav-icon, .home-icon{
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          height: 3vh;
-          width: 3vh;
-          padding: 0;
-          margin-top: .5vh;
-          margin-right: .5vh;
-          border: 0;
-          background: none;
-          cursor: pointer;
-          text-decoration: none;
-          color: inherit;
-        }
+      .nav-icon img,
+      .home-icon img {
+        height: 100%;
+        width: auto;
+        pointer-events: none;
+      }
 
-        .nav-icon img, .home-icon img{
-          height: 100%;
-          width: auto;
-          pointer-events: none;
-        }
-
-        .Nome{
-            color: white;
-            height: 15vw;
-            background-color: #008055;
-            padding-top: 80px;
-            padding-left: 80px;
-            text-align: left;
-            
-        }
+      .Nome {
+        color: white;
+        height: 15vw;
+        background-color: #008055;
+        padding-top: 80px;
+        padding-left: 80px;
+        text-align: left;
+      }
 
         .Nome h1{
           font-weight: bold;
@@ -74,104 +72,145 @@
             font-size: 2vh;
         }
 
-        .fotos{
-            margin-top: 5%;
-            margin-left: 10%;
-            width: 79vw;
-            height: 23vh;
-            border-radius: 28px;
-            box-shadow: 0 8px 26px rgba(0,0,0,0.7);
-        }
+      .fotos {
+        margin-top: 5%;
+        margin-left: 10%;
+        width: 79vw;
+        height: 23vh;
+        border-radius: 28px;
+        box-shadow: 0 8px 26px rgba(0, 0, 0, 0.7);
+      }
 
-        .fotos img{
-        
-            width: 22vh;
-        }
+      .fotos img {
+        width: 22vh;
+      }
 
-        .discricao{
-            text-align: left;
-            
-            margin: 3vw 11vw 0 10vw;
-        }
-        .discricao h1{
-            color: #00583A;
-            font-weight: bold;
-            font-size: 3vw;
-            margin-top: 4vw;
-        }
-        .discricao p{
-            color: #008055;
-            font-size: 2vw;
-            margin-top: 2vw;
-        }
-        .discricao h2{
-            color: #008055;
-            font-size: 2vw;
-            margin-top: 2vw;
-        }
-        
+      .discricao {
+        text-align: left;
 
-        footer{
-             position: absolute; 
-                bottom: 0; 
-                left: 0; 
-                width: 100%; 
-                height: 80px; 
-                
-                
-                background-color: #006400;
-                
-        }
+        margin: 3vw 11vw 0 10vw;
+      }
+      .discricao h1 {
+        color: #00583a;
+        font-weight: bold;
+        font-size: 3vw;
+        margin-top: 4vw;
+      }
+      .discricao p {
+        color: #008055;
+        font-size: 2vw;
+        margin-top: 2vw;
+      }
+      .discricao h2 {
+        color: #008055;
+        font-size: 2vw;
+        margin-top: 2vw;
+      }
+
+      footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 80px;
+
+        background-color: #006400;
+      }
+
+      /* 1) Garanta que a página possa rolar verticalmente */
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        overflow-y: auto;
+        overscroll-behavior-y: contain; /* evita bounce/arrasto do sistema */
+        -webkit-overflow-scrolling: touch; /* suaviza em iOS; no Windows não atrapalha */
+        touch-action: pan-y; /* libera rolagem com 1 dedo */
+      }
+
+      /* 2) Para contêineres roláveis específicos (se houver) */
+      .scrollable,
+      main,
+      section {
+        overflow-y: auto;
+        touch-action: pan-y;
+      }
+
+      /* 3) Componentes “arrastáveis” (carrossel, sliders, cards) não devem matar a rolagem vertical */
+      .carousel,
+      .draggable,
+      a,
+      button {
+        touch-action: pan-y;
+      }
+
+      /* 4) Se em algum lugar você usou touch-action:none, neutraliza */
+      *:not(input):not(textarea) {
+        touch-action: pan-y !important;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <img id="logo" src="images/IMGS_PARA_BANNER/vetnil Logo.png" alt="">
-        <div>
-          <a id="backBtn" title="Voltar" class="nav-icon">
-            <img id="backButton" src="images/IMGS_PARA_BANNER/Arrow.png" alt="">
-          </a>
-          <a id="homeLink" href="index.html" class="home-icon" title="Voltar ao início">
-            <img id="homeIcon" class="homeImg" src="images/IMGS_PARA_BANNER/home.png" alt="">
-          </a>
-        </div>
-    
-      </header>
+      <img id="logo" src="images/IMGS_PARA_BANNER/vetnil Logo.png" alt="" />
+      <div>
+        <a id="backBtn" title="Voltar" class="nav-icon">
+          <img id="backButton" src="images/IMGS_PARA_BANNER/Arrow.png" alt="" />
+        </a>
+        <a
+          id="homeLink"
+          href="index.html"
+          class="home-icon"
+          title="Voltar ao início"
+        >
+          <img
+            id="homeIcon"
+            class="homeImg"
+            src="images/IMGS_PARA_BANNER/home.png"
+            alt=""
+          />
+        </a>
+      </div>
+    </header>
     <main>
-        <div class="Nome">
-            <h1 id="nomeProduto">Cal-d-mix</h1>
-            <h2 id="subtituloProduto">Cálcio oral.</h2>
-        </div>
+      <div class="Nome">
+        <h1 id="nomeProduto">Cal-d-mix</h1>
+        <h2 id="subtituloProduto">Cálcio oral.</h2>
+      </div>
 
-        <div class="fotos">
-            <img id="imgProduto" src="images/SOURCE_IMGS_E_TEXTOS_PRODUTOS/01_ACEPRAN 0,2�/Acepran_0,2�_site.png" alt="">
-        </div>
-        
-        <div class="discricao" id="conteudoProduto">
-            <!-- O JS abaixo vai preencher este bloco com o doc certo (ES/EN) -->
-            <h1>TEXTO INICIAL</h1>
-            <p>Carregando conteúdo…</p>
-        </div>
+      <div class="fotos">
+        <img
+          id="imgProduto"
+          src="images/SOURCE_IMGS_E_TEXTOS_PRODUTOS/01_ACEPRAN 0,2�/Acepran_0,2�_site.png"
+          alt=""
+        />
+      </div>
 
+      <div class="discricao" id="conteudoProduto">
+        <!-- O JS abaixo vai preencher este bloco com o doc certo (ES/EN) -->
+        <h1>TEXTO INICIAL</h1>
+        <p>Carregando conteúdo…</p>
+      </div>
     </main>
     <footer></footer>
 
     <!-- ===== CSV de idiomas por país (pode colar o mesmo do pais.html) ===== -->
     <script id="csv-idiomas" type="text/plain">
-PAÍS;IDIOMA
-Mexico;Espanhol
-Chile;Espanhol
-Peru;Espanhol
-Uruguay;Espanhol
-Colombia;Espanhol
-Paraguay;Espanhol
-Costa Rica;Espanhol
-Panama;Espanhol
-Ecuador;Espanhol
-Bolivia;Espanhol
-Dominican Republic;Espanhol
-Slovenia;Inglês
-United Arab Emirates;Inglês
+      PAÍS;IDIOMA
+      Mexico;Espanhol
+      Chile;Espanhol
+      Peru;Espanhol
+      Uruguay;Espanhol
+      Colombia;Espanhol
+      Paraguay;Espanhol
+      Costa Rica;Espanhol
+      Panama;Espanhol
+      Ecuador;Espanhol
+      Bolivia;Espanhol
+      Dominican Republic;Espanhol
+      Slovenia;Inglês
+      United Arab Emirates;Inglês
     </script>
 
     <!-- ===== Conteúdo do produto (um bloco por idioma) =====
@@ -1045,284 +1084,388 @@ United Arab Emirates;Inglês
     </script>
 
     <script>
-      window.addEventListener('DOMContentLoaded', () => {
-        
-      
+      window.addEventListener("DOMContentLoaded", () => {
         const PRODUCT_IMG = {
-  // Exemplo:
-  // 'Glicopan Pet': './images/produtos/glicopan-pet/glicopan-pet.png',
-  // 'Vetmax plus Suspensão': './images/produtos/vetmax-plus-suspensao/vetmax-plus-suspensao.png',
-  'Acepran 0,2%': './images/produtos/01_ACEPRAN 0,2�/Acepran_0,2�_site.png',
-  'Acepran Gotas': './images/produtos/02_ACEPRAN GOTAS/Acepran_Gotas_site.png',
-  'Alantol': './images/produtos/03_ALANTOL/Packshot-Alantol_pet_site_V2.png',
-  'Aminomix Pet': './images/produtos/04_AMINOMIX PET/Packshot_Aminomix-Pet_site_V3.png',
-  'Aminomix Pet Comprimido': './images/produtos/05_AMINOMIX PET COMP/Aminomix-Pet_120-comp_site_V2.png',
-  'Aminomix Pet Pó': './images/produtos/06_AMINOMIX PET PÓ/Packshot_Aminomix100-500-Pet_site_V2.png',
-  'Aurivet® Clean pH Neutro': './images/produtos/vetnil_aurivet-clean-ph-neutro/Packshot_Aurivet Clean pH Neutro_site_selo_V1.png',
-  'Cal-d-mix': './images/produtos/07_CAL-D-MIX PET/Packshot_Cal-D-Mix_pet_site.png',
-  'Condroton Injetavel': './images/produtos/08_CONDROTON INJETÁVEL/Condroton-Injetável-10ml_pet_site.png',
-  'Condroton Comprimidos': './images/produtos/09_CONDROTON COMPRIMIDOS/Pack_Condroton-Comp_site.png',
-  'Doxiciclina Injetavel': './images/produtos/10_DOXICICLINA VETNIL SOLUÇÃO INJETÁVEL/Doxiciclina Inj_site.png',
-  'Doxiciclina Vetnil Solução Injetável': './images/produtos/vetnil_doxiciclina-in/Doxiciclina Inj_site_selo.png',
-  'Enterex': './images/produtos/11_ENTEREX/Enterex_8g_site.png',
-  'Eletrolitico Pet': './images/produtos/12_ELETROLÍTICO PET/Eletrolitico-Pet_10g_site.png',
-  'Firocoxib Vetnil® Comprimido': './images/produtos/vetnil_firocoxib-vetnil-comprimido/pack_Firocoxib_individual2_site.png',
-  'Geripet Comprimido': './images/produtos/13_GERIPET COMPRIMIDO/Geripet 30 comp_site.png',
-  'Glicopan Pet': './images/produtos/14_GLICOPAN PET/Packshot_Glicopan Pet_site.png',
-  'Hidrovit': './images/produtos/15_HIDROVIT/Packshot_Hidrovit_passaro_site_V2.png',
-  'Hemolitan Pet': './images/produtos/16_HEMOLITAN PET/Packshot_Hemolitan_liq._site_V2.png',
-  'Hemolitan Pet Comprimidos': './images/produtos/17_HEMOLITAN PET COMPRIMIDOS/Hemolitan Pet 30 comp_site.png',
-  'Hemolitan Gold Comprimidos': './images/produtos/18_HEMOLITAN GOLD COMPRIMIDOS/Hemolitan Gold 30 comp.png',
-  'Hepvet': './images/produtos/19_HEPVET/Packshot_Hepvet_V3.png',
-  'Hepvet Comprimidos': './images/produtos/20_HEPVET COMP/Hepvet_30 Comp_site_V2.png',
-  'Keravit': './images/produtos/21_KERAVIT/Keravit-5g_Pet_site_V2.png',
-  'Meloxinew® 0,2% Injetável': './images/produtos/vetnil_meloxinew_injetavel_50ml/meloxinew_injetável_50mL_site.png',
-  'Nutralife 14g': './images/produtos/22_NUTRALIFE 14G/Nutralife_14g_site_V2.png',
-  'Nutralife Intensiv': './images/produtos/23_NUTRALIFE INTENSIV/Nutralife Intensiv_site_V3.png',
-  'Optivet® clean': './images/produtos/vetnil_optivet-clean/Optivet Clean 100 ml_site_selo.png',
-  'Organew Pet': './images/produtos/24_ORGANEW PET/Organew_100g_site_V2.png',
-  'Organew Pet Pasta': './images/produtos/25_ORGANEW PET PASTA/Organew_12g_site.png',
-  'Pelo e Derme Gold': './images/produtos/26_PELO E DERME GOLD/Packshot_Pelo & Derme_site.png',
-  'Pelo e Derme 750 1500': './images/produtos/27_PELO E DERME 750 E 1500/Packshot_Pelo e Derme_750+1500_V2.png',
-  'Periovet': './images/produtos/28_PERIOVET/Packshot_Periovet_site_set24.png',
-  'Pet Milk': './images/produtos/29_PET MILK/Packshot_Pet-Milk_site_V2.png',
-  'Petprazol': './images/produtos/30_PETPRAZOL/Packshot_Petprazol_site.png',
-  'Probiótico Vetnil Cães e Gatos': './images/produtos/31_PROBIÓTICO VETNIL CÃES E GATOS/Probiotico_14g_site_V2.png',
-  'Quetamina Injetável Vetnil': './images/produtos/32_QUETAMINA INJETÁVEL VETNIL/Quetamina_10mL_site.png',
-  'Vita-Vet C': './images/produtos/33_VITA-VET C/Vita Vet C 30 ml_site.png',
-  'Vetmax plus Suspensão': './images/produtos/34_VETMAX SUSPENSAO/Vetmax-Susp.-Oral_site.png',
-  'Vetmax plus Comp': './images/produtos/35_VETMAX PLUS COMPRIMIDO/Vetmax-Plus-4-comp_site_V3.png',
-  'Vetaglós': './images/produtos/36_VETAGLÓS/Vetaglós_20g_site_V2.png',
-  'Vetnidazol® Comprimidos': './images/produtos/vetnil_vetnidazol/pack_Vetnidazol_individual_site.png',
-  'Vetnil® Skin Care Clean': './images/produtos/vetnil_vetnil-skin-care-clean/skin Care Clean_site_V5.png',
-  'Vetnil® Skin Care Defense': './images/produtos/vetnil_vetnil-skin-care-defense/skin Care Defense_site_V5.png',
-  'Vetnil® Skin Care Hidrat': './images/produtos/vetnil_vetnil-skin-care-hidrati/skin Care Hidrat_site_V5.png'
-};
+          // Exemplo:
+          // 'Glicopan Pet': './images/produtos/glicopan-pet/glicopan-pet.png',
+          // 'Vetmax plus Suspensão': './images/produtos/vetmax-plus-suspensao/vetmax-plus-suspensao.png',
+          "Acepran 0,2%":
+            "./images/produtos/01_ACEPRAN 0,2�/Acepran_0,2�_site.png",
+          "Acepran Gotas":
+            "./images/produtos/02_ACEPRAN GOTAS/Acepran_Gotas_site.png",
+          Alantol:
+            "./images/produtos/03_ALANTOL/Packshot-Alantol_pet_site_V2.png",
+          "Aminomix Pet":
+            "./images/produtos/04_AMINOMIX PET/Packshot_Aminomix-Pet_site_V3.png",
+          "Aminomix Pet Comprimido":
+            "./images/produtos/05_AMINOMIX PET COMP/Aminomix-Pet_120-comp_site_V2.png",
+          "Aminomix Pet Pó":
+            "./images/produtos/06_AMINOMIX PET PÓ/Packshot_Aminomix100-500-Pet_site_V2.png",
+          "Aurivet® Clean pH Neutro":
+            "./images/produtos/vetnil_aurivet-clean-ph-neutro/Packshot_Aurivet Clean pH Neutro_site_selo_V1.png",
+          "Cal-d-mix":
+            "./images/produtos/07_CAL-D-MIX PET/Packshot_Cal-D-Mix_pet_site.png",
+          "Condroton Injetavel":
+            "./images/produtos/08_CONDROTON INJETÁVEL/Condroton-Injetável-10ml_pet_site.png",
+          "Condroton Comprimidos":
+            "./images/produtos/09_CONDROTON COMPRIMIDOS/Pack_Condroton-Comp_site.png",
+          "Doxiciclina Injetavel":
+            "./images/produtos/10_DOXICICLINA VETNIL SOLUÇÃO INJETÁVEL/Doxiciclina Inj_site.png",
+          "Doxiciclina Vetnil Solução Injetável":
+            "./images/produtos/vetnil_doxiciclina-in/Doxiciclina Inj_site_selo.png",
+          Enterex: "./images/produtos/11_ENTEREX/Enterex_8g_site.png",
+          "Eletrolitico Pet":
+            "./images/produtos/12_ELETROLÍTICO PET/Eletrolitico-Pet_10g_site.png",
+          "Firocoxib Vetnil® Comprimido":
+            "./images/produtos/vetnil_firocoxib-vetnil-comprimido/pack_Firocoxib_individual2_site.png",
+          "Geripet Comprimido":
+            "./images/produtos/13_GERIPET COMPRIMIDO/Geripet 30 comp_site.png",
+          "Glicopan Pet":
+            "./images/produtos/14_GLICOPAN PET/Packshot_Glicopan Pet_site.png",
+          Hidrovit:
+            "./images/produtos/15_HIDROVIT/Packshot_Hidrovit_passaro_site_V2.png",
+          "Hemolitan Pet":
+            "./images/produtos/16_HEMOLITAN PET/Packshot_Hemolitan_liq._site_V2.png",
+          "Hemolitan Pet Comprimidos":
+            "./images/produtos/17_HEMOLITAN PET COMPRIMIDOS/Hemolitan Pet 30 comp_site.png",
+          "Hemolitan Gold Comprimidos":
+            "./images/produtos/18_HEMOLITAN GOLD COMPRIMIDOS/Hemolitan Gold 30 comp.png",
+          Hepvet: "./images/produtos/19_HEPVET/Packshot_Hepvet_V3.png",
+          "Hepvet Comprimidos":
+            "./images/produtos/20_HEPVET COMP/Hepvet_30 Comp_site_V2.png",
+          Keravit: "./images/produtos/21_KERAVIT/Keravit-5g_Pet_site_V2.png",
+          "Meloxinew® 0,2% Injetável":
+            "./images/produtos/vetnil_meloxinew_injetavel_50ml/meloxinew_injetável_50mL_site.png",
+          "Nutralife 14g":
+            "./images/produtos/22_NUTRALIFE 14G/Nutralife_14g_site_V2.png",
+          "Nutralife Intensiv":
+            "./images/produtos/23_NUTRALIFE INTENSIV/Nutralife Intensiv_site_V3.png",
+          "Optivet® clean":
+            "./images/produtos/vetnil_optivet-clean/Optivet Clean 100 ml_site_selo.png",
+          "Organew Pet":
+            "./images/produtos/24_ORGANEW PET/Organew_100g_site_V2.png",
+          "Organew Pet Pasta":
+            "./images/produtos/25_ORGANEW PET PASTA/Organew_12g_site.png",
+          "Pelo e Derme Gold":
+            "./images/produtos/26_PELO E DERME GOLD/Packshot_Pelo & Derme_site.png",
+          "Pelo e Derme 750 1500":
+            "./images/produtos/27_PELO E DERME 750 E 1500/Packshot_Pelo e Derme_750+1500_V2.png",
+          Periovet:
+            "./images/produtos/28_PERIOVET/Packshot_Periovet_site_set24.png",
+          "Pet Milk":
+            "./images/produtos/29_PET MILK/Packshot_Pet-Milk_site_V2.png",
+          Petprazol:
+            "./images/produtos/30_PETPRAZOL/Packshot_Petprazol_site.png",
+          "Probiótico Vetnil Cães e Gatos":
+            "./images/produtos/31_PROBIÓTICO VETNIL CÃES E GATOS/Probiotico_14g_site_V2.png",
+          "Quetamina Injetável Vetnil":
+            "./images/produtos/32_QUETAMINA INJETÁVEL VETNIL/Quetamina_10mL_site.png",
+          "Vita-Vet C":
+            "./images/produtos/33_VITA-VET C/Vita Vet C 30 ml_site.png",
+          "Vetmax plus Suspensão":
+            "./images/produtos/34_VETMAX SUSPENSAO/Vetmax-Susp.-Oral_site.png",
+          "Vetmax plus Comp":
+            "./images/produtos/35_VETMAX PLUS COMPRIMIDO/Vetmax-Plus-4-comp_site_V3.png",
+          Vetaglós: "./images/produtos/36_VETAGLÓS/Vetaglós_20g_site_V2.png",
+          "Vetnidazol® Comprimidos":
+            "./images/produtos/vetnil_vetnidazol/pack_Vetnidazol_individual_site.png",
+          "Vetnil® Skin Care Clean":
+            "./images/produtos/vetnil_vetnil-skin-care-clean/skin Care Clean_site_V5.png",
+          "Vetnil® Skin Care Defense":
+            "./images/produtos/vetnil_vetnil-skin-care-defense/skin Care Defense_site_V5.png",
+          "Vetnil® Skin Care Hidrat":
+            "./images/produtos/vetnil_vetnil-skin-care-hidrati/skin Care Hidrat_site_V5.png",
+        };
 
+        // ==== utilidades ====
+        function getParam(name) {
+          // 1) query string normal ?a=b
+          const q = new URL(location.href).searchParams.get(name);
+          if (q) return q;
 
-// ==== utilidades ====
-  function getParam(name){
-  // 1) query string normal ?a=b
-  const q = new URL(location.href).searchParams.get(name);
-  if (q) return q;
+          // 2) hash params #a=b&c=d
+          const hash = location.hash
+            ? new URLSearchParams(location.hash.replace(/^#/, ""))
+            : null;
+          return hash ? hash.get(name) : null;
+        }
+        const norm = (s) =>
+          (s || "")
+            .normalize("NFD")
+            .replace(/\p{Diacritic}/gu, "")
+            .toUpperCase();
 
-  // 2) hash params #a=b&c=d
-  const hash = location.hash ? new URLSearchParams(location.hash.replace(/^#/, '')) : null;
-  return hash ? hash.get(name) : null;
-}
-  const norm = s => (s||'').normalize('NFD').replace(/\p{Diacritic}/gu,'').toUpperCase();
+        function parseCSV(text) {
+          const first = text.split(/\r?\n/).find((l) => l.trim());
+          const d = first?.includes("\t")
+            ? "\t"
+            : first?.includes(";")
+            ? ";"
+            : ",";
+          const rows = [],
+            re = /\r\n|\n|\r/g;
+          text = (text || "").replace(re, "\n");
+          let i = 0,
+            cur = [],
+            val = "",
+            q = false;
+          while (i < text.length) {
+            const ch = text[i];
+            if (q) {
+              if (ch == '"') {
+                if (text[i + 1] == '"') {
+                  val += '"';
+                  i++;
+                } else q = false;
+              } else val += ch;
+            } else {
+              if (ch == '"') q = true;
+              else if (ch == d) {
+                cur.push(val.trim());
+                val = "";
+              } else if (ch == "\n") {
+                cur.push(val.trim());
+                rows.push(cur);
+                cur = [];
+                val = "";
+              } else val += ch;
+            }
+            i++;
+          }
+          if (val.length || cur.length) {
+            cur.push(val.trim());
+            rows.push(cur);
+          }
+          return rows.filter((r) => r.length && r.some((c) => c !== ""));
+        }
 
-  function parseCSV(text){
-    const first = text.split(/\r?\n/).find(l => l.trim());
-    const d = first?.includes('\t') ? '\t' : first?.includes(';') ? ';' : ',';
-    const rows=[], re=/\r\n|\n|\r/g; text=(text||'').replace(re,'\n');
-    let i=0, cur=[], val='', q=false;
-    while(i<text.length){
-      const ch=text[i];
-      if(q){ if(ch=='"'){ if(text[i+1]=='"'){val+='"'; i++;} else q=false; } else val+=ch; }
-      else { if(ch=='"') q=true; else if(ch==d){cur.push(val.trim()); val='';}
-        else if(ch=='\n'){cur.push(val.trim()); rows.push(cur); cur=[]; val='';}
-        else val+=ch; }
-      i++;
-    }
-    if(val.length||cur.length){cur.push(val.trim()); rows.push(cur);}
-    return rows.filter(r => r.length && r.some(c => c !== ''));
-  }
+        function getIdiomaDoPais(pais) {
+          const csv = document.getElementById("csv-idiomas")?.textContent || "";
+          const rows = parseCSV(csv);
+          const head = rows[0].map(norm);
+          const iPais =
+            head.indexOf("PAIS") >= 0
+              ? head.indexOf("PAIS")
+              : head.indexOf("PAÍS");
+          const iIdiom = head.indexOf("IDIOMA");
+          if (iPais < 0 || iIdiom < 0) return "Espanhol";
+          const r = rows.slice(1).find((l) => (l[iPais] || "") === pais);
+          return r ? r[iIdiom] || "Espanhol" : "Espanhol";
+        }
 
-  function getIdiomaDoPais(pais){
-    const csv = document.getElementById('csv-idiomas')?.textContent || '';
-    const rows = parseCSV(csv);
-    const head = rows[0].map(norm);
-    const iPais = head.indexOf('PAIS') >= 0 ? head.indexOf('PAIS') : head.indexOf('PAÍS');
-    const iIdiom = head.indexOf('IDIOMA');
-    if(iPais<0 || iIdiom<0) return 'Espanhol';
-    const r = rows.slice(1).find(l => (l[iPais]||'') === pais);
-    return r ? (r[iIdiom]||'Espanhol') : 'Espanhol';
-  }
+        function idiomaParaSufixo(idioma) {
+          const n = norm(idioma);
+          if (n.includes("INGLES") || n.includes("INGLÊS")) return "in-es";
+          return "es";
+        }
 
-  function idiomaParaSufixo(idioma){
-    const n = norm(idioma);
-    if(n.includes('INGLES') || n.includes('INGLÊS')) return 'in-es';
-    return 'es';
-  }
+        function getDocById(id) {
+          const el = document.getElementById(id);
+          return el ? el.textContent : null;
+        }
 
-  function getDocById(id){
-    const el = document.getElementById(id);
-    return el ? el.textContent : null;
-  }
+        function guessNomeBonito(slug) {
+          return slug
+            .split("-")
+            .map((p) => p.charAt(0).toUpperCase() + p.slice(1))
+            .join(" ");
+        }
 
-  function guessNomeBonito(slug){
-    return slug.split('-').map(p => p.charAt(0).toUpperCase()+p.slice(1)).join(' ');
-  }
+        // helpers para mapear imagem
+        function slugify(s) {
+          return (s || "")
+            .normalize("NFD")
+            .replace(/\p{Diacritic}/gu, "")
+            .replace(/[®°]/g, "")
+            .replace(/0,\s*2/g, "0-2") // "0,2" -> "0-2"
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/(^-|-$)/g, "");
+        }
+        function normName(s) {
+          return (s || "")
+            .normalize("NFD")
+            .replace(/\p{Diacritic}/gu, "")
+            .replace(/[®]/g, "")
+            .replace(/\s+/g, " ")
+            .trim()
+            .toUpperCase();
+        }
 
-  // helpers para mapear imagem
-  function slugify(s){
-    return (s||'')
-      .normalize('NFD').replace(/\p{Diacritic}/gu,'')
-      .replace(/[®°]/g,'')
-      .replace(/0,\s*2/g,'0-2') // "0,2" -> "0-2"
-      .toLowerCase().replace(/[^a-z0-9]+/g,'-')
-      .replace(/(^-|-$)/g,'');
-  }
-  function normName(s){
-    return (s||'')
-      .normalize('NFD').replace(/\p{Diacritic}/gu,'')
-      .replace(/[®]/g,'')
-      .replace(/\s+/g,' ')
-      .trim().toUpperCase();
-  }
+        // gera um índice por slug uma vez só
+        const PRODUCT_IMG_BY_SLUG = (() => {
+          const out = {};
+          for (const [name, path] of Object.entries(PRODUCT_IMG)) {
+            out[slugify(name)] = path;
+          }
+          return out;
+        })();
 
-  // gera um índice por slug uma vez só
-  const PRODUCT_IMG_BY_SLUG = (() => {
-    const out = {};
-    for (const [name, path] of Object.entries(PRODUCT_IMG)) {
-      out[ slugify(name) ] = path;
-    }
-    return out;
-  })();
+        (function bootProduto() {
+          const pais = getParam("pais") || "";
+          let slug = getParam("produto") || "";
+          const idioma = getIdiomaDoPais(pais);
+          const sufixo = idiomaParaSufixo(idioma);
 
-  (function bootProduto(){
-    const pais   = getParam('pais') || '';
-    let slug   = getParam('produto') || '';
-    const idioma = getIdiomaDoPais(pais);
-    const sufixo = idiomaParaSufixo(idioma);
+          // Fallback 1: se não veio slug na URL, usa o título visível (#nomeProduto)
+          if (!slug) {
+            const tituloVisivel = document
+              .getElementById("nomeProduto")
+              ?.textContent?.trim();
+            if (tituloVisivel) slug = slugify(tituloVisivel);
+          }
 
-    // Fallback 1: se não veio slug na URL, usa o título visível (#nomeProduto)
-  if (!slug) {
-    const tituloVisivel = document.getElementById('nomeProduto')?.textContent?.trim();
-    if (tituloVisivel) slug = slugify(tituloVisivel);
-  }
-
-  // Fallback 2: se ainda não tiver slug, mostra uma mensagem clara
-  if (!slug) {
-    document.getElementById('conteudoProduto').innerHTML =
-      `<h1>Selecione um produto</h1>
+          // Fallback 2: se ainda não tiver slug, mostra uma mensagem clara
+          if (!slug) {
+            document.getElementById(
+              "conteudoProduto"
+            ).innerHTML = `<h1>Selecione um produto</h1>
        <p>Abra este arquivo com <code>#produto=&lt;slug&gt;&amp;pais=&lt;país&gt;</code><br>
        Ex.: <code>produto.html#produto=cal-d-mix&amp;pais=Chile</code></p>`;
-    return;
-  }
+            return;
+          }
 
-    // carrega HTML do doc (com fallback p/ ES)
-    let docId = `doc-${slug}-${sufixo}`;
-    let html  = getDocById(docId);
+          // carrega HTML do doc (com fallback p/ ES)
+          let docId = `doc-${slug}-${sufixo}`;
+          let html = getDocById(docId);
 
-    if (!html) {
-      // tenta variações e fallback para ES/IN-ES
-      const tentativas = [
-        `doc-${slug}-es`,
-        `doc-${slug}-in-es`
-      ];
-      for (const id of tentativas) {
-        html = getDocById(id);
-        if (html) { docId = id; break; }
-      }
-    }
-    if (!html) {
-      // tenta qualquer doc cujo id comece com doc-<slug>
-      const anyId = Array.from(document.querySelectorAll('script[id^="doc-"][type="text/plain"]'))
-        .map(s => s.id)
-        .find(id => id.startsWith(`doc-${slug}`));
-      if (anyId) { docId = anyId; html = getDocById(anyId); }
-    }
-    if (!html) {
-      document.getElementById('conteudoProduto').innerHTML =
-        `<h1>Conteúdo indisponível</h1>
+          if (!html) {
+            // tenta variações e fallback para ES/IN-ES
+            const tentativas = [`doc-${slug}-es`, `doc-${slug}-in-es`];
+            for (const id of tentativas) {
+              html = getDocById(id);
+              if (html) {
+                docId = id;
+                break;
+              }
+            }
+          }
+          if (!html) {
+            // tenta qualquer doc cujo id comece com doc-<slug>
+            const anyId = Array.from(
+              document.querySelectorAll('script[id^="doc-"][type="text/plain"]')
+            )
+              .map((s) => s.id)
+              .find((id) => id.startsWith(`doc-${slug}`));
+            if (anyId) {
+              docId = anyId;
+              html = getDocById(anyId);
+            }
+          }
+          if (!html) {
+            document.getElementById(
+              "conteudoProduto"
+            ).innerHTML = `<h1>Conteúdo indisponível</h1>
          <p>Não encontrei o doc para <code>${slug}</code>.</p>`;
-      return;
-    }
+            return;
+          }
 
-    // 1) Preenche a área de descrição com o HTML do doc
-    const conteudoEl = document.getElementById('conteudoProduto');
-    conteudoEl.innerHTML = html;
+          // 1) Preenche a área de descrição com o HTML do doc
+          const conteudoEl = document.getElementById("conteudoProduto");
+          conteudoEl.innerHTML = html;
 
-    // Utilitário rápido para parsear
-    const tmp = document.createElement('div');
-    tmp.innerHTML = html;
+          // Utilitário rápido para parsear
+          const tmp = document.createElement("div");
+          tmp.innerHTML = html;
 
-    // 2) Extrai a tagline (primeiro <p>, preferindo <em>) e coloca no subtítulo
-    const subtEl = document.getElementById('subtituloProduto');
-    const firstP = tmp.querySelector('h2');
-    let tagline = '';
-    if (firstP) {
-      const ems = firstP.querySelectorAll('em,i');
-      const emText = Array.from(ems).map(e => e.textContent.trim()).filter(Boolean).join(' ');
-      tagline = (emText || firstP.textContent || '').replace(/\s+/g, ' ').trim();
-    }
-    if (subtEl) subtEl.textContent = tagline || '';
+          // 2) Extrai a tagline (primeiro <p>, preferindo <em>) e coloca no subtítulo
+          const subtEl = document.getElementById("subtituloProduto");
+          const firstP = tmp.querySelector("h2");
+          let tagline = "";
+          if (firstP) {
+            const ems = firstP.querySelectorAll("em,i");
+            const emText = Array.from(ems)
+              .map((e) => e.textContent.trim())
+              .filter(Boolean)
+              .join(" ");
+            tagline = (emText || firstP.textContent || "")
+              .replace(/\s+/g, " ")
+              .trim();
+          }
+          if (subtEl) subtEl.textContent = tagline || "";
 
-    // 3) (Opcional) Atualiza o título pelo primeiro <h1> do doc
-    const titleEl = document.getElementById('nomeProduto');
-    const h1Doc = tmp.querySelector('h1')?.textContent?.trim();
-    if (h1Doc && titleEl) titleEl.textContent = h1Doc;
+          // 3) (Opcional) Atualiza o título pelo primeiro <h1> do doc
+          const titleEl = document.getElementById("nomeProduto");
+          const h1Doc = tmp.querySelector("h1")?.textContent?.trim();
+          if (h1Doc && titleEl) titleEl.textContent = h1Doc;
 
-    // 4) (Opcional) Atualiza a imagem de acordo com o slug ou título extraído
-    const imgEl = document.getElementById('imgProduto');
-    if (imgEl) {
-      const bySlug = PRODUCT_IMG_BY_SLUG[slug];
-      if (bySlug) {
-        imgEl.src = bySlug;
-        imgEl.alt = h1Doc || guessNomeBonito(slug);
-      } else if (h1Doc) {
-        const altSlug = slugify(h1Doc);
-        if (PRODUCT_IMG_BY_SLUG[altSlug]) {
-          imgEl.src = PRODUCT_IMG_BY_SLUG[altSlug];
-          imgEl.alt = h1Doc;
-        }
-      }
-    }
+          // 4) (Opcional) Atualiza a imagem de acordo com o slug ou título extraído
+          const imgEl = document.getElementById("imgProduto");
+          if (imgEl) {
+            const bySlug = PRODUCT_IMG_BY_SLUG[slug];
+            if (bySlug) {
+              imgEl.src = bySlug;
+              imgEl.alt = h1Doc || guessNomeBonito(slug);
+            } else if (h1Doc) {
+              const altSlug = slugify(h1Doc);
+              if (PRODUCT_IMG_BY_SLUG[altSlug]) {
+                imgEl.src = PRODUCT_IMG_BY_SLUG[altSlug];
+                imgEl.alt = h1Doc;
+              }
+            }
+          }
 
-    // 5) Botão voltar
-    document.getElementById('backBtn')?.addEventListener('click', (e) => {
-      e.preventDefault();
-      if (history.length > 1) history.back();
-      else location.href = 'index.html';
-    });
-  })();
-})
-</script>
+          // 5) Botão voltar
+          document.getElementById("backBtn")?.addEventListener("click", (e) => {
+            e.preventDefault();
+            if (history.length > 1) history.back();
+            else location.href = "index.html";
+          });
+        })();
+      });
+    </script>
 
-<script src="./pressFX.js"></script>
-<script>
-(function () {
-  // pega ?pais= ... ou #pais= ...
-  const getParam = (name) => {
-    const q = new URLSearchParams(location.search).get(name);
-    if (q) return q;
-    const h = location.hash ? new URLSearchParams(location.hash.slice(1)) : null;
-    return h ? h.get(name) : null;
-  };
+    <script src="./pressFX.js"></script>
+    <script>
+      (function () {
+        // pega ?pais= ... ou #pais= ...
+        const getParam = (name) => {
+          const q = new URLSearchParams(location.search).get(name);
+          if (q) return q;
+          const h = location.hash
+            ? new URLSearchParams(location.hash.slice(1))
+            : null;
+          return h ? h.get(name) : null;
+        };
 
-  const pais     = getParam('pais');
-  const homeHref = pais ? `index.html?pais=${encodeURIComponent(pais)}` : 'index.html';
-  const fallback = pais ? `Brasil.html?pais=${encodeURIComponent(pais)}` : 'index.html';
+        const pais = getParam("pais");
+        const homeHref = pais
+          ? `index.html?pais=${encodeURIComponent(pais)}`
+          : "index.html";
+        const fallback = pais
+          ? `Brasil.html?pais=${encodeURIComponent(pais)}`
+          : "index.html";
 
-  // home com ?pais=
-  const home = document.getElementById('homeLink');
-  if (home) home.href = homeHref;
+        // home com ?pais=
+        const home = document.getElementById("homeLink");
+        if (home) home.href = homeHref;
 
-  // back com fallback garantido
-  const back = document.getElementById('backBtn');
-  if (back) back.setAttribute('href', fallback);
+        // back com fallback garantido
+        const back = document.getElementById("backBtn");
+        if (back) back.setAttribute("href", fallback);
 
-  // efeito de press (se existir)
-  if (window.attachPressFX) attachPressFX('.nav-icon, .home-icon');
+        // efeito de press (se existir)
+        if (window.attachPressFX) attachPressFX(".nav-icon, .home-icon");
 
-  // clique do voltar
-  back?.addEventListener('click', function (e) {
-    e.preventDefault();
-    const delay = 280; // combine com a duração da sua animação
+        // clique do voltar
+        back?.addEventListener("click", function (e) {
+          e.preventDefault();
+          const delay = 280; // combine com a duração da sua animação
 
-    setTimeout(() => {
-      const ref = document.referrer || '';
-      // considera Brasil.html (ou pais.html, caso algum link antigo exista)
-      if ((ref.includes('Brasil.html') || ref.includes('pais.html')) && history.length > 1) {
-        history.back();
-      } else {
-        location.href = fallback;
-      }
-    }, delay);
-  });
-})();
-</script>
-</body>
+          setTimeout(() => {
+            const ref = document.referrer || "";
+            // considera Brasil.html (ou pais.html, caso algum link antigo exista)
+            if (
+              (ref.includes("Brasil.html") || ref.includes("pais.html")) &&
+              history.length > 1
+            ) {
+              history.back();
+            } else {
+              location.href = fallback;
+            }
+          }, delay);
+        });
+      })();
+    </script>
+  </body>
 </html>
