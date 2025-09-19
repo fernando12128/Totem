@@ -124,3 +124,36 @@ footer {
     height: 80px;
     background-color: #006400;
 }
+
+/* 1) Garanta que a página possa rolar verticalmente */
+html,
+body {
+  height: 100%;
+}
+body {
+  overflow-y: auto;
+  overscroll-behavior-y: contain; /* evita bounce/arrasto do sistema */
+  -webkit-overflow-scrolling: touch; /* suaviza em iOS; no Windows não atrapalha */
+  touch-action: pan-y; /* libera rolagem com 1 dedo */
+}
+
+/* 2) Para contêineres roláveis específicos (se houver) */
+.scrollable,
+main,
+section {
+  overflow-y: auto;
+  touch-action: pan-y;
+}
+
+/* 3) Componentes “arrastáveis” (carrossel, sliders, cards) não devem matar a rolagem vertical */
+.carousel,
+.draggable,
+a,
+button {
+  touch-action: pan-y;
+}
+
+/* 4) Se em algum lugar você usou touch-action:none, neutraliza */
+*:not(input):not(textarea) {
+  touch-action: pan-y !important;
+}
