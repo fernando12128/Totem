@@ -15,6 +15,10 @@
       font-family: Arial, sans-serif;
       margin: 0;
       background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
     }
 
     /* Cabeçalho */
@@ -115,6 +119,10 @@
 .contatos a {
     text-decoration: none;
 }
+main {
+    /* Adicione esta linha para empurrar o footer para baixo */
+    flex-grow: 1; 
+}
 
 
     /* Grid de produtos */
@@ -150,7 +158,7 @@
     .produto img{max-width:80vw;max-height:25vw;object-fit:contain;margin-bottom:8px}
 
     footer{
-        height: 50px;
+        height: 80px; 
         background-color: rgb(0, 87, 0);
     }
   </style>
