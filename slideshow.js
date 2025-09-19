@@ -1,26 +1,36 @@
-// Lista dos caminhos das imagens que você quer alternar
-const imagens = [
+// slideshow.js
+(function () {
+  const imagens = [
     'images/IMGS_PARA_BANNER/Imagem vet.png',
-    'images/IMGS_PARA_BANNER/BANNER_02_IN.png', // Substitua pelo caminho da sua segunda imagem
-    'images/IMGS_PARA_BANNER/BANNER_03_ES.png',  // Substitua pelo caminho da sua terceira imagem
-];
+    'images/IMGS_PARA_BANNER/BANNER_02_IN.png',
+    'images/IMGS_PARA_BANNER/BANNER_03_ES.png',
+  ];
 
-let imagemAtualIndex = 0;
-const bannerElement = document.getElementById('bannerInicial');
+  function start() {
+    const img = document.getElementById('bannerInicial');
+    if (!img) {
+      console.warn('[slideshow] #bannerInicial não encontrado');
+      return;
+    }
 
-function mudarImagem() {
-    // Incrementa o índice. Se chegar ao fim do array, volta para o início.
-    imagemAtualIndex = (imagemAtualIndex + 1) % imagens.length;
-    
-    // Altera o atributo 'src' do elemento da imagem
-    bannerElement.src = imagens[imagemAtualIndex];
-}
+    let i = 0;
+    const troca = () => {
+  img.classList.add('is-fading');
+  setTimeout(() => {
+    i = (i + 1) % imagens.length;
+    img.onload = () => img.classList.remove('is-fading');
+    img.src = imagens[i];
+  }, 150);
+};
 
-// Inicia o slideshow quando a página é carregada
-document.addEventListener('DOMContentLoaded', () => {
-    // Define a primeira imagem
-    bannerElement.src = imagens[0];
-    
-    // Altera a imagem a cada 3000 milissegundos (3 segundos)
-    setInterval(mudarImagem, 3000);
-});
+    // primeira imagem + log de erros de caminho
+    img.onerror = () => console.error('[slideshow] erro ao carregar:', img.src);
+    img.src = imagens[0];
+
+    // troca a cada 3s
+    setInterval(troca, 3000);
+  }
+
+  if (document.readyState !== 'loading') start();
+  else document.addEventListener('DOMContentLoaded', start, { once: true });
+})();

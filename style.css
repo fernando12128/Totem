@@ -157,3 +157,7 @@ button {
 *:not(input):not(textarea) {
   touch-action: pan-y !important;
 }
+
+#bannerInicial { transition: opacity .35s ease; }
+#bannerInicial.is-fading { opacity: 0; }
+
