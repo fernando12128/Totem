@@ -102,12 +102,12 @@
         .discricao h1{
             color: #00583A;
             font-weight: bold;
-            font-size: 3vw;
+            font-size: 5vw;
             margin-top: 4vw;
         }
         .discricao p{
             color: #008055;
-            font-size: 2vw;
+            font-size: 2.6vw;
             margin-top: 2vw;
         }
         .discricao h2{
@@ -124,8 +124,7 @@
         }
 
       /* 1) Garanta que a página possa rolar verticalmente */
-      html,
-      body {
+      html {
         height: 100%;
       }
       body {
@@ -154,6 +153,44 @@
       /* 4) Se em algum lugar você usou touch-action:none, neutraliza */
       *:not(input):not(textarea) {
         touch-action: pan-y !important;
+      }
+
+
+      @media (max-height: 1920px) {
+      .Nome {
+        color: white;
+        height: 14vw;
+        background-color: #008055;
+        padding-top: 40px;
+        padding-left: 50px;
+        text-align: left;
+      }
+
+        .Nome h1{
+          font-weight: bold;
+            font-size: 3vh;
+        }
+
+        .Nome h2{
+            font-size: 2vh;
+        }
+
+        .discricao h1{
+            color: #00583A;
+            font-weight: bold;
+            font-size: 4vw;
+            margin-top: 4vw;
+        }
+        .discricao p{
+            color: #008055;
+            font-size: 2.6vw;
+            margin-top: 2vw;
+        }
+        .discricao h2{
+            color: #008055;
+            font-size: 2vw;
+            margin-top: 2vw;
+        }
       }
 
     </style>

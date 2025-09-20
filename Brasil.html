@@ -15,9 +15,9 @@
       font-family: Arial, sans-serif;
       margin: 0;
       background-color: #f5f5f5;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
 
     }
 
@@ -94,7 +94,7 @@
 .info p, .contatos p, .info a, .contatos a {
   /* Usando clamp() para uma fonte responsiva e controlada */
   /* Mínimo 14px, preferencial 1.2vw, máximo 22px */
-  font-size: 1.5vw;
+  font-size: 1.7vw;
   line-height: 1.5; /* Melhora a legibilidade */
   color: white; /* Garante que os links fiquem brancos também */
   margin: 2px 0; /* Pequeno espaçamento vertical entre as linhas de texto */
@@ -165,8 +165,7 @@ main {
       }
 
       /* 1) Garanta que a página possa rolar verticalmente */
-      html,
-      body {
+      html {
         height: 100%;
       }
       body {
@@ -195,6 +194,43 @@ main {
       /* 4) Se em algum lugar você usou touch-action:none, neutraliza */
       *:not(input):not(textarea) {
         touch-action: pan-y !important;
+      }
+
+
+      @media (max-height: 1920px) {
+        /* Aumenta o tamanho da logo para ficar mais visível */
+        .header-container img {
+          height: 5vh; /* Ajuste se necessário */
+        }
+        
+
+        #home, .home-icon {
+          height: 3.3vh;
+        }
+        
+        .distr h3 {
+          font-size: 2vh;
+        }
+
+        /* Aumenta o tamanho das fontes e margens do bloco de distribuidores */
+        .info p, .contatos p, .info a, .contatos a {
+          font-size: 1.7vw;
+        }
+
+        /* Aumenta o tamanho dos itens do grid de produtos */
+        .produto {
+          height: 25vh; /* Aumenta a altura para os produtos ficarem maiores */
+          padding: 15px; /* Aumenta o padding */
+        }
+
+        .produto p {
+          font-size: 1.8vh; /* Aumenta o tamanho da fonte do nome do produto */
+        }
+        
+        .distribuidor img {
+          width: 8vh;
+          height: 5.5vh;
+        }
       }
     </style>
   </head>
