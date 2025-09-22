@@ -157,6 +157,31 @@ button {
   touch-action: pan-y !important;
 }
 
+/* === Scroll FAB === */
+.scroll-btn{
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  border: 0;
+  background: #00583A;
+  color: #fff;
+  font-size: 48px;
+  line-height: 160px;
+  box-shadow: 0 10px 22px rgba(0,0,0,.28);
+  cursor: pointer;
+  z-index: 9999;
+}
+
+.scroll-btn:active { transform: scale(0.96); }
+@media (prefers-reduced-motion: no-preference){
+  .scroll-btn{ transition: transform .2s ease, box-shadow .2s ease; }
+}
+
+/* Opcional: botão de subir, empilhado acima do descer */
+.scroll-btn.up { bottom: 192px; }
+
 #bannerInicial { transition: opacity .35s ease; }
 #bannerInicial.is-fading { opacity: 0; }
 
@@ -208,5 +233,23 @@ h1 {
   border-radius: 0px;
   padding: 5px;
 }
+
+.scroll-btn{
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  border: 0;
+  background: #00583A;
+  color: #fff;
+  font-size: 24px;
+  line-height: 56px;
+  box-shadow: 0 10px 22px rgba(0,0,0,.28);
+  cursor: pointer;
+  z-index: 9999;
+}
+
+.scroll-btn.up { bottom: 92px; }
 
 }

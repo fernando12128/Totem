@@ -8,74 +8,70 @@
     <style>
       * {
         margin: 0;
+      }
 
-    }
-    
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background-color: #f5f5f5;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background-color: #f5f5f5;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
 
-    }
+      /* Cabeçalho */
+      header {
+        height: 5vh;
+        background-color: #00583a;
+        color: white;
+        padding: 15px 30px;
+      }
 
-    /* Cabeçalho */
-    header {
-      height: 5vh;
-      background-color: #00583A;
-      color: white;
-      padding: 15px 30px;
-    }
+      #home {
+        margin-top: 0.5vh;
+        margin-right: 0.5vh;
+        height: 3vh;
+      }
 
-    #home{
-      margin-top: 0.5vh;
-      margin-right: 0.5vh;
-      height: 3vh;
-    }
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+      }
 
-    .header-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      flex-wrap: wrap;
-    }
+      .logo {
+        font-size: 2vh;
+        font-weight: bold;
+      }
 
-    .logo {
-      font-size: 2vh;
-      font-weight: bold;
-    }
+      .home-icon {
+        height: 3vh;
+        margin-top: 0.5vh;
+        margin-right: 0.5vh;
+        display: block;
+      }
 
-    .home-icon {
-      height: 3vh;
-      margin-top: .5vh;
-      margin-right: .5vh;
-      display: block;
-    }
+      .distribuidor {
+        display: flex;
+        justify-content: space-between;
+        align-items: center; /* Garante o alinhamento vertical centralizado */
+        padding: 0 2.5vh; /* Espaçamento nas laterais */
+        gap: 20px; /* Adiciona um espaço mínimo entre os elementos */
+      }
 
-.distribuidor {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;          /* Garante o alinhamento vertical centralizado */
-  padding: 0 2.5vh;             /* Espaçamento nas laterais */
-  gap: 20px;                    /* Adiciona um espaço mínimo entre os elementos */
-}
+      .distribuidorBandeira {
+        flex-shrink: 0; /* Evita que a bandeira encolha */
+      }
 
-.distribuidorBandeira {
-  flex-shrink: 0; /* Evita que a bandeira encolha */
-}
-
-    .distribuidor img {
-      border-radius: 14px;
-      width: 8vh;
-      height: 5vh;
-      border: 4px solid white;
-    }
-     
+      .distribuidor img {
+        border-radius: 14px;
+        width: 8vh;
+        height: 5vh;
+        border: 4px solid white;
+      }
 
       .distr {
-
         height: 10vh;
         padding-top: 20px;
         padding-bottom: 20px;
@@ -88,79 +84,83 @@
         padding-left: 2.5vh;
         font-weight: bold;
         padding-bottom: 15px;
-    }
+      }
 
-    
-.info p, .contatos p, .info a, .contatos a {
-  /* Usando clamp() para uma fonte responsiva e controlada */
-  /* Mínimo 14px, preferencial 1.2vw, máximo 22px */
-  font-size: 1.7vw;
-  line-height: 1.5; /* Melhora a legibilidade */
-  color: white; /* Garante que os links fiquem brancos também */
-  margin: 2px 0; /* Pequeno espaçamento vertical entre as linhas de texto */
-}
+      .info p,
+      .contatos p,
+      .info a,
+      .contatos a {
+        /* Usando clamp() para uma fonte responsiva e controlada */
+        /* Mínimo 14px, preferencial 1.2vw, máximo 22px */
+        font-size: 1.7vw;
+        line-height: 1.5; /* Melhora a legibilidade */
+        color: white; /* Garante que os links fiquem brancos também */
+        margin: 2px 0; /* Pequeno espaçamento vertical entre as linhas de texto */
+      }
 
-.info .brPromo{
-      font-weight: 800;
-      font-size: clamp(28px, 3.4vw, 56px);
-      line-height: 1.25;
-      color: #fff;
-    }
+      .info .brPromo {
+        font-weight: 800;
+        font-size: clamp(28px, 3.4vw, 56px);
+        line-height: 1.25;
+        color: #fff;
+      }
 
+      .info {
+        flex-grow: 1; /* Faz este bloco crescer para ocupar o espaço livre */
+        text-align: left; /* Alinha o texto à esquerda dentro deste bloco */
+      }
 
-    .info {
-  flex-grow: 1;                 /* Faz este bloco crescer para ocupar o espaço livre */
-  text-align: left;             /* Alinha o texto à esquerda dentro deste bloco */
-}
+      .contatos {
+        flex-shrink: 0; /* Evita que o bloco de contatos encolha e quebre linha */
+        text-align: right; /* Alinha o texto à direita dentro deste bloco */
+      }
 
-.contatos {
-  flex-shrink: 0;               /* Evita que o bloco de contatos encolha e quebre linha */
-  text-align: right;            /* Alinha o texto à direita dentro deste bloco */
-}
+      .contatos a {
+        text-decoration: none;
+      }
+      main {
+        /* Adicione esta linha para empurrar o footer para baixo */
+        flex-grow: 1;
+      }
 
-.contatos a {
-    text-decoration: none;
-}
-main {
-    /* Adicione esta linha para empurrar o footer para baixo */
-    flex-grow: 1; 
-}
+      /* Grid de produtos */
+      .produtos {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        padding: 30px;
+        width: 95vw;
+        margin: auto;
+      }
 
+      .produto {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        height: 16vh;
+        padding: 10px;
+      }
 
-    /* Grid de produtos */
-    .produtos {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      padding: 30px;
-      width: 95vw;
-      margin: auto;
-    }
+      .produto p {
+        margin: 0;
+        color: #006d4f;
+        font-weight: bold;
+        font-size: 1.2vh;
+      }
 
-    .produto {
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      align-items: center;
-      height: 16vh;
-      padding: 10px;
-    }
+      .produto img {
+        max-width: 80vw;
+        max-height: 25vw;
+        object-fit: contain;
+        margin-bottom: 8px;
+      }
 
-    .produto p {
-      margin: 0;
-      color: #006d4f;
-      font-weight: bold;
-      font-size: 1.2vh;
-    }
-
-
-    .produto img{max-width:80vw;max-height:25vw;object-fit:contain;margin-bottom:8px}
-
-    footer{
-        height: 80px; 
+      footer {
+        height: 80px;
         background-color: rgb(0, 87, 0);
       }
 
@@ -196,24 +196,58 @@ main {
         touch-action: pan-y !important;
       }
 
+      /* === Scroll FAB === */
+      .scroll-btn {
+        position: fixed;
+        right: 24px;
+        bottom: 24px;
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        border: 0;
+        background: #00583a;
+        color: #fff;
+        font-size: 48px;
+        line-height: 160px;
+        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.28);
+        cursor: pointer;
+        z-index: 9999;
+      }
+
+      .scroll-btn:active {
+        transform: scale(0.96);
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        .scroll-btn {
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+      }
+
+      /* Opcional: botão de subir, empilhado acima do descer */
+      .scroll-btn.up {
+        bottom: 192px;
+      }
 
       @media (max-height: 1920px) {
         /* Aumenta o tamanho da logo para ficar mais visível */
         .header-container img {
           height: 5vh; /* Ajuste se necessário */
         }
-        
 
-        #home, .home-icon {
+        #home,
+        .home-icon {
           height: 3.3vh;
         }
-        
+
         .distr h3 {
           font-size: 2vh;
         }
 
         /* Aumenta o tamanho das fontes e margens do bloco de distribuidores */
-        .info p, .contatos p, .info a, .contatos a {
+        .info p,
+        .contatos p,
+        .info a,
+        .contatos a {
           font-size: 1.7vw;
         }
 
@@ -227,12 +261,37 @@ main {
           font-size: 1.4vh; /* Aumenta o tamanho da fonte do nome do produto */
         }
 
-        .produto img{max-width:60vw;max-height:25vw;object-fit:contain;margin-bottom:8px}
+        .produto img {
+          max-width: 60vw;
+          max-height: 25vw;
+          object-fit: contain;
+          margin-bottom: 8px;
+        }
 
-        
         .distribuidor img {
           width: 8vh;
           height: 5.5vh;
+        }
+
+        .scroll-btn {
+          position: fixed;
+          right: 24px;
+          bottom: 24px;
+          width: 56px;
+          height: 56px;
+          border-radius: 50%;
+          border: 0;
+          background: #00583a;
+          color: #fff;
+          font-size: 24px;
+          line-height: 56px;
+          box-shadow: 0 10px 22px rgba(0, 0, 0, 0.28);
+          cursor: pointer;
+          z-index: 9999;
+        }
+
+        .scroll-btn.up {
+          bottom: 92px;
         }
       }
     </style>
@@ -831,6 +890,61 @@ main {
               '<div style="grid-column:1/-1;color:#b00020">Erro ao carregar dados embutidos.</div>';
           }
         });
+      })();
+    </script>
+
+    <script>
+      (function () {
+        // Tamanho do "Page Down": ~90% da altura da viewport
+        function pageStep() {
+          return Math.round(window.innerHeight * 0.9);
+        }
+
+        // Cria o botão de descer
+        const downBtn = document.createElement("button");
+        downBtn.className = "scroll-btn";
+        downBtn.setAttribute("aria-label", "Descer uma página");
+        downBtn.innerHTML = "▼";
+        document.body.appendChild(downBtn);
+
+        function pgDown() {
+          window.scrollBy({ top: pageStep(), left: 0, behavior: "smooth" });
+        }
+        function pgUp() {
+          window.scrollBy({ top: -pageStep(), left: 0, behavior: "smooth" });
+        }
+
+        // Clique para descer
+        downBtn.addEventListener("click", pgDown, { passive: true });
+
+        // (Opcional) Pressionar e segurar ~0.6s faz subir
+        let holdTimer = null;
+        downBtn.addEventListener(
+          "touchstart",
+          () => {
+            holdTimer = setTimeout(pgUp, 600);
+          },
+          { passive: true }
+        );
+        ["touchend", "touchcancel", "mouseup", "mouseleave"].forEach((ev) =>
+          downBtn.addEventListener(ev, () => clearTimeout(holdTimer), {
+            passive: true,
+          })
+        );
+
+        // (Opcional) Habilita também PageUp/PageDown no teclado
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "PageDown") pgDown();
+          if (e.key === "PageUp") pgUp();
+        });
+
+        // ====== OPCIONAL: criar também um botão "subir" dedicado (empilhado acima) ======
+        const upBtn = document.createElement("button");
+        upBtn.className = "scroll-btn up";
+        upBtn.setAttribute("aria-label", "Subir uma página");
+        upBtn.innerHTML = "▲";
+        document.body.appendChild(upBtn);
+        upBtn.addEventListener("click", pgUp, { passive: true });
       })();
     </script>
   </body>

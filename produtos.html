@@ -7,32 +7,28 @@
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="./effects.css" />
     <style>
+      header {
+        height: 5vh;
+        padding: 15px 30px;
+        background-color: #00583a;
+        /* box-shadow: 0 6px 18px rgba(0,0,0,0.35); */
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
 
-      
-        header{
-            height: 5vh;
-            padding: 15px 30px;
-            background-color: #00583A;
-            /* box-shadow: 0 6px 18px rgba(0,0,0,0.35); */
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        background: #f9f9f9;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #f9f9f9;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        main{
-          text-align: center;
-          flex-grow: 1; 
-          
-        }
-
+      main {
+        text-align: center;
+        flex-grow: 1;
+      }
 
       #logo {
         height: 5.2vh;
@@ -71,14 +67,14 @@
         text-align: left;
       }
 
-        .Nome h1{
-          font-weight: bold;
-            font-size: 3vh;
-        }
+      .Nome h1 {
+        font-weight: bold;
+        font-size: 3vh;
+      }
 
-        .Nome h2{
-            font-size: 2vh;
-        }
+      .Nome h2 {
+        font-size: 2vh;
+      }
 
       .fotos {
         margin-top: 5%;
@@ -93,35 +89,33 @@
         width: 22vh;
       }
 
+      .discricao {
+        text-align: left;
 
-        .discricao{
-            text-align: left;
-            
-            margin: 3vw 11vw 0 10vw;
-        }
-        .discricao h1{
-            color: #00583A;
-            font-weight: bold;
-            font-size: 5vw;
-            margin-top: 4vw;
-        }
-        .discricao p{
-            color: #008055;
-            font-size: 2.6vw;
-            margin-top: 2vw;
-        }
-        .discricao h2{
-            color: #008055;
-            font-size: 2vw;
-            margin-top: 2vw;
-        }
-        
+        margin: 3vw 11vw 0 10vw;
+      }
+      .discricao h1 {
+        color: #00583a;
+        font-weight: bold;
+        font-size: 5vw;
+        margin-top: 4vw;
+      }
+      .discricao p {
+        color: #008055;
+        font-size: 2.6vw;
+        margin-top: 2vw;
+      }
+      .discricao h2 {
+        color: #008055;
+        font-size: 2vw;
+        margin-top: 2vw;
+      }
 
-        footer{        
-                width: 100%; 
-                height: 80px; 
-                background-color: #006400;
-        }
+      footer {
+        width: 100%;
+        height: 80px;
+        background-color: #006400;
+      }
 
       /* 1) Garanta que a página possa rolar verticalmente */
       html {
@@ -155,44 +149,95 @@
         touch-action: pan-y !important;
       }
 
+      /* === Scroll FAB === */
+      .scroll-btn {
+        position: fixed;
+        right: 24px;
+        bottom: 24px;
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        border: 0;
+        background: #00583a;
+        color: #fff;
+        font-size: 48px;
+        line-height: 160px;
+        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.28);
+        cursor: pointer;
+        z-index: 9999;
+      }
+
+      .scroll-btn:active {
+        transform: scale(0.96);
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        .scroll-btn {
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+      }
+
+      /* Opcional: botão de subir, empilhado acima do descer */
+      .scroll-btn.up {
+        bottom: 192px;
+      }
 
       @media (max-height: 1920px) {
-      .Nome {
-        color: white;
-        height: 14vw;
-        background-color: #008055;
-        padding-top: 40px;
-        padding-left: 50px;
-        text-align: left;
-      }
+        .Nome {
+          color: white;
+          height: 14vw;
+          background-color: #008055;
+          padding-top: 40px;
+          padding-left: 50px;
+          text-align: left;
+        }
 
-        .Nome h1{
+        .Nome h1 {
           font-weight: bold;
-            font-size: 3vh;
+          font-size: 3vh;
         }
 
-        .Nome h2{
-            font-size: 2vh;
+        .Nome h2 {
+          font-size: 2vh;
         }
 
-        .discricao h1{
-            color: #00583A;
-            font-weight: bold;
-            font-size: 4vw;
-            margin-top: 4vw;
+        .discricao h1 {
+          color: #00583a;
+          font-weight: bold;
+          font-size: 4vw;
+          margin-top: 4vw;
         }
-        .discricao p{
-            color: #008055;
-            font-size: 2.6vw;
-            margin-top: 2vw;
+        .discricao p {
+          color: #008055;
+          font-size: 2.6vw;
+          margin-top: 2vw;
         }
-        .discricao h2{
-            color: #008055;
-            font-size: 2vw;
-            margin-top: 2vw;
+        .discricao h2 {
+          color: #008055;
+          font-size: 2vw;
+          margin-top: 2vw;
+        }
+
+        .scroll-btn {
+          position: fixed;
+          right: 24px;
+          bottom: 24px;
+          width: 56px;
+          height: 56px;
+          border-radius: 50%;
+          border: 0;
+          background: #00583a;
+          color: #fff;
+          font-size: 24px;
+          line-height: 56px;
+          box-shadow: 0 10px 22px rgba(0, 0, 0, 0.28);
+          cursor: pointer;
+          z-index: 9999;
+        }
+
+        .scroll-btn.up {
+          bottom: 92px;
         }
       }
-
     </style>
   </head>
   <body>
@@ -1509,6 +1554,61 @@
             }
           }, delay);
         });
+      })();
+    </script>
+
+    <script>
+      (function () {
+        // Tamanho do "Page Down": ~90% da altura da viewport
+        function pageStep() {
+          return Math.round(window.innerHeight * 0.9);
+        }
+
+        // Cria o botão de descer
+        const downBtn = document.createElement("button");
+        downBtn.className = "scroll-btn";
+        downBtn.setAttribute("aria-label", "Descer uma página");
+        downBtn.innerHTML = "▼";
+        document.body.appendChild(downBtn);
+
+        function pgDown() {
+          window.scrollBy({ top: pageStep(), left: 0, behavior: "smooth" });
+        }
+        function pgUp() {
+          window.scrollBy({ top: -pageStep(), left: 0, behavior: "smooth" });
+        }
+
+        // Clique para descer
+        downBtn.addEventListener("click", pgDown, { passive: true });
+
+        // (Opcional) Pressionar e segurar ~0.6s faz subir
+        let holdTimer = null;
+        downBtn.addEventListener(
+          "touchstart",
+          () => {
+            holdTimer = setTimeout(pgUp, 600);
+          },
+          { passive: true }
+        );
+        ["touchend", "touchcancel", "mouseup", "mouseleave"].forEach((ev) =>
+          downBtn.addEventListener(ev, () => clearTimeout(holdTimer), {
+            passive: true,
+          })
+        );
+
+        // (Opcional) Habilita também PageUp/PageDown no teclado
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "PageDown") pgDown();
+          if (e.key === "PageUp") pgUp();
+        });
+
+        // ====== OPCIONAL: criar também um botão "subir" dedicado (empilhado acima) ======
+        const upBtn = document.createElement("button");
+        upBtn.className = "scroll-btn up";
+        upBtn.setAttribute("aria-label", "Subir uma página");
+        upBtn.innerHTML = "▲";
+        document.body.appendChild(upBtn);
+        upBtn.addEventListener("click", pgUp, { passive: true });
       })();
     </script>
   </body>
