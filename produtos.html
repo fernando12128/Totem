@@ -950,7 +950,10 @@
       <p>Plastic  bottles   containing  30 tablets  of  100mg  or  200mg.</p>
     </script>
 
-    <script id="doc-probiotico®-vetnil-caes-e-gatos-es-e-gatos-es" type="text/plain">
+    <script
+      id="doc-probiotico®-vetnil-caes-e-gatos-es-e-gatos-es"
+      type="text/plain"
+    >
       <h1>Probiótico® Vetnil Cães e Gatos</h1>
       <p><em>Para una flora microbiana </em> <em>saludable.</em></p>
       <h1>INDICACIÓN</h1>
@@ -959,7 +962,10 @@
       <p>Jeringa   conteniendo  14g.</p>
     </script>
 
-    <script id="doc-probiotico®-vetnil-caes-e-gatos-es-e-gatos-in-es" type="text/plain">
+    <script
+      id="doc-probiotico®-vetnil-caes-e-gatos-es-e-gatos-in-es"
+      type="text/plain"
+    >
       <h1>Probiótico® Vetnil Cães e Gatos</h1>
       <p><em>For </em> <em>healthy</em> <em> microbial flora.</em></p>
       <h1>INDICATION</h1>
@@ -1174,96 +1180,97 @@
 
     <script>
       window.addEventListener("DOMContentLoaded", () => {
-      const PRODUCT_IMG = {
-        // Exemplo:
-        // 'Glicopan Pet': './images/produtos/glicopan-pet/glicopan-pet.png',
-        // 'Vetmax plus Suspensão': './images/produtos/vetmax-plus-suspensao/vetmax-plus-suspensao.png',
-        "Acepran® 0,2%":
-          "./images/produtos/01_ACEPRAN 0,2�/Acepran_0,2�_site.png",
-        "Acepran® ":
-          "./images/produtos/02_ACEPRAN GOTAS/Acepran_Gotas_site.png",
-        "Alantol®":
-          "./images/produtos/03_ALANTOL/Packshot-Alantol_pet_site_V2.png",
-        "Aminomix® Pet":
-          "./images/produtos/04_AMINOMIX PET/Packshot_Aminomix-Pet_site_V3.png",
-        "Aminomix® Pet Comprimido":
-          "./images/produtos/05_AMINOMIX PET COMP/Aminomix-Pet_120-comp_site_V2.png",
-        "Aminomix® Pet Pó":
-          "./images/produtos/06_AMINOMIX PET PÓ/Packshot_Aminomix100-500-Pet_site_V2.png",
-        "Aurivet® ":
-          "./images/produtos/vetnil_aurivet-clean-ph-neutro/Packshot_Aurivet Clean pH Neutro_site_selo_V1.png",
-        "Cal-d-mix® ":
-          "./images/produtos/07_CAL-D-MIX PET/Packshot_Cal-D-Mix_pet_site.png",
-        "Condroton® ":
-          "./images/produtos/08_CONDROTON INJETÁVEL/Condroton-Injetável-10ml_pet_site.png",
-        "Condroton® ":
-          "./images/produtos/09_CONDROTON COMPRIMIDOS/Pack_Condroton-Comp_site.png",
-        "Doxiciclina Vetnil ":
-          "./images/produtos/10_DOXICICLINA VETNIL SOLUÇÃO INJETÁVEL/Doxiciclina Inj_site.png",
-        Enterex: "./images/produtos/11_ENTEREX/Enterex_8g_site.png",
-        "Eletrolitico® Pet":
-          "./images/produtos/12_ELETROLÍTICO PET/Eletrolitico-Pet_10g_site.png",
-        "Firocoxib Vetnil® ":
-          "./images/produtos/vetnil_firocoxib-vetnil-comprimido/pack_Firocoxib_individual2_site.png",
-        "Geripet® ":
-          "./images/produtos/13_GERIPET COMPRIMIDO/Geripet 30 comp_site.png",
-        "Glicopan® Pet":
-          "./images/produtos/14_GLICOPAN PET/Packshot_Glicopan Pet_site.png",
-        "Hidrovit®":
-          "./images/produtos/15_HIDROVIT/Packshot_Hidrovit_passaro_site_V2.png",
-        "Hemolitan® Pet":
-          "./images/produtos/16_HEMOLITAN PET/Packshot_Hemolitan_liq._site_V2.png",
-        "Hemolitan® Pet ":
-          "./images/produtos/17_HEMOLITAN PET COMPRIMIDOS/Hemolitan Pet 30 comp_site.png",
-        "Hemolitan® Gold ":
-          "./images/produtos/18_HEMOLITAN GOLD COMPRIMIDOS/Hemolitan Gold 30 comp.png",
-        "Hepvet®": "./images/produtos/19_HEPVET/Packshot_Hepvet_V3.png",
-        "Hepvet® Comprimidos":
-          "./images/produtos/20_HEPVET COMP/Hepvet_30 Comp_site_V2.png",
-        "Keravit®": "./images/produtos/21_KERAVIT/Keravit-5g_Pet_site_V2.png",
-        "Meloxinew® 0,2%":
-          "./images/produtos/vetnil_meloxinew_injetavel_50ml/meloxinew_injetável_50mL_site.png",
-        "Nutralife® ":
-          "./images/produtos/22_NUTRALIFE 14G/Nutralife_14g_site_V2.png",
-        "Nutralife® Intensiv":
-          "./images/produtos/23_NUTRALIFE INTENSIV/Nutralife Intensiv_site_V3.png",
-        "Optivet® ":
-          "./images/produtos/vetnil_optivet-clean/Optivet Clean 100 ml_site_selo.png",
-        "Organew® Pet":
-          "./images/produtos/24_ORGANEW PET/Organew_100g_site_V2.png",
-        "Organew® Pet Pasta":
-          "./images/produtos/25_ORGANEW PET PASTA/Organew_12g_site.png",
-        "Pelo & Derme® Gold":
-          "./images/produtos/26_PELO E DERME GOLD/Packshot_Pelo & Derme_site.png",
-        "Pelo & Derme® 750&1500 DHA + EPA":
-          "./images/produtos/27_PELO E DERME 750 E 1500/Packshot_Pelo e Derme_750+1500_V2.png",
-        "Periovet®":
-          "./images/produtos/28_PERIOVET/Packshot_Periovet_site_set24.png",
-        "Pet Milk®":
-          "./images/produtos/29_PET MILK/Packshot_Pet-Milk_site_V2.png",
-        "Petprazol®": "./images/produtos/30_PETPRAZOL/Packshot_Petprazol_site.png",
-        "Probiótico® Vetnil Cães e Gatos":
-          "./images/produtos/31_PROBIÓTICO VETNIL CÃES E GATOS/Probiotico_14g_site_V2.png",
-        "Quetamina Injetável Vetnil":
-          "./images/produtos/32_QUETAMINA INJETÁVEL VETNIL/Quetamina_10mL_site.png",
-        "Vita-Vet C®":
-          "./images/produtos/33_VITA-VET C/Vita Vet C 30 ml_site.png",
-        "Vetmax® plus Suspensão":
-          "./images/produtos/34_VETMAX SUSPENSAO/Vetmax-Susp.-Oral_site.png",
-        "Vetmax® plus ":
-          "./images/produtos/35_VETMAX PLUS COMPRIMIDO/Vetmax-Plus-4-comp_site_V3.png",
-        "Vetaglós®": "./images/produtos/36_VETAGLÓS/Vetaglós_20g_site_V2.png",
-        "Vetnidazol® ":
-          "./images/produtos/vetnil_vetnidazol/pack_Vetnidazol_individual_site.png",
-        "Vetnil® Skin Care Clean":
-          "./images/produtos/vetnil_vetnil-skin-care-clean/skin Care Clean_site_V5.png",
-        "Vetnil® Skin Care Defense":
-          "./images/produtos/vetnil_vetnil-skin-care-defense/skin Care Defense_site_V5.png",
-        "Vetnil® Skin Care Hidrat":
-          "./images/produtos/vetnil_vetnil-skin-care-hidrati/skin Care Hidrat_site_V5.png",
-        "Vetnil Doxiciclina Solução Injetavel":
-          "./images/produtos/vetnil_doxiciclina-in/Doxiciclina Inj_site_selo.png",
-      };
+        const PRODUCT_IMG = {
+          // Exemplo:
+          // 'Glicopan Pet': './images/produtos/glicopan-pet/glicopan-pet.png',
+          // 'Vetmax plus Suspensão': './images/produtos/vetmax-plus-suspensao/vetmax-plus-suspensao.png',
+          "Acepran® 0,2%":
+            "./images/produtos/01_ACEPRAN 0,2�/Acepran_0,2�_site.png",
+          "Acepran® ":
+            "./images/produtos/02_ACEPRAN GOTAS/Acepran_Gotas_site.png",
+          "Alantol®":
+            "./images/produtos/03_ALANTOL/Packshot-Alantol_pet_site_V2.png",
+          "Aminomix® Pet":
+            "./images/produtos/04_AMINOMIX PET/Packshot_Aminomix-Pet_site_V3.png",
+          "Aminomix® Pet Comprimido":
+            "./images/produtos/05_AMINOMIX PET COMP/Aminomix-Pet_120-comp_site_V2.png",
+          "Aminomix® Pet Pó":
+            "./images/produtos/06_AMINOMIX PET PÓ/Packshot_Aminomix100-500-Pet_site_V2.png",
+          "Aurivet® ":
+            "./images/produtos/vetnil_aurivet-clean-ph-neutro/Packshot_Aurivet Clean pH Neutro_site_selo_V1.png",
+          "Cal-d-mix® ":
+            "./images/produtos/07_CAL-D-MIX PET/Packshot_Cal-D-Mix_pet_site.png",
+          "Condroton® Injetavel":
+            "./images/produtos/08_CONDROTON INJETÁVEL/Condroton-Injetável-10ml_pet_site.png",
+          "Condroton® Comprimidos":
+            "./images/produtos/09_CONDROTON COMPRIMIDOS/Pack_Condroton-Comp_site.png",
+          "Doxiciclina Vetnil ":
+            "./images/produtos/10_DOXICICLINA VETNIL SOLUÇÃO INJETÁVEL/Doxiciclina Inj_site.png",
+          Enterex: "./images/produtos/11_ENTEREX/Enterex_8g_site.png",
+          "Eletrolitico® Pet":
+            "./images/produtos/12_ELETROLÍTICO PET/Eletrolitico-Pet_10g_site.png",
+          "Firocoxib Vetnil® ":
+            "./images/produtos/vetnil_firocoxib-vetnil-comprimido/pack_Firocoxib_individual2_site.png",
+          "Geripet® ":
+            "./images/produtos/13_GERIPET COMPRIMIDO/Geripet 30 comp_site.png",
+          "Glicopan® Pet":
+            "./images/produtos/14_GLICOPAN PET/Packshot_Glicopan Pet_site.png",
+          "Hidrovit®":
+            "./images/produtos/15_HIDROVIT/Packshot_Hidrovit_passaro_site_V2.png",
+          "Hemolitan® Pet":
+            "./images/produtos/16_HEMOLITAN PET/Packshot_Hemolitan_liq._site_V2.png",
+          "Hemolitan® Pet Comprimidos":
+            "./images/produtos/17_HEMOLITAN PET COMPRIMIDOS/Hemolitan Pet 30 comp_site.png",
+          "Hemolitan® Gold ":
+            "./images/produtos/18_HEMOLITAN GOLD COMPRIMIDOS/Hemolitan Gold 30 comp.png",
+          "Hepvet®": "./images/produtos/19_HEPVET/Packshot_Hepvet_V3.png",
+          "Hepvet® Comprimidos":
+            "./images/produtos/20_HEPVET COMP/Hepvet_30 Comp_site_V2.png",
+          "Keravit®": "./images/produtos/21_KERAVIT/Keravit-5g_Pet_site_V2.png",
+          "Meloxinew® 0,2%":
+            "./images/produtos/vetnil_meloxinew_injetavel_50ml/meloxinew_injetável_50mL_site.png",
+          "Nutralife® ":
+            "./images/produtos/22_NUTRALIFE 14G/Nutralife_14g_site_V2.png",
+          "Nutralife® Intensiv":
+            "./images/produtos/23_NUTRALIFE INTENSIV/Nutralife Intensiv_site_V3.png",
+          "Optivet® ":
+            "./images/produtos/vetnil_optivet-clean/Optivet Clean 100 ml_site_selo.png",
+          "Organew® Pet":
+            "./images/produtos/24_ORGANEW PET/Organew_100g_site_V2.png",
+          "Organew® Pet Pasta":
+            "./images/produtos/25_ORGANEW PET PASTA/Organew_12g_site.png",
+          "Pelo & Derme® Gold":
+            "./images/produtos/26_PELO E DERME GOLD/Packshot_Pelo & Derme_site.png",
+          "Pelo & Derme® 750&1500 DHA + EPA":
+            "./images/produtos/27_PELO E DERME 750 E 1500/Packshot_Pelo e Derme_750+1500_V2.png",
+          "Periovet®":
+            "./images/produtos/28_PERIOVET/Packshot_Periovet_site_set24.png",
+          "Pet Milk®":
+            "./images/produtos/29_PET MILK/Packshot_Pet-Milk_site_V2.png",
+          "Petprazol®":
+            "./images/produtos/30_PETPRAZOL/Packshot_Petprazol_site.png",
+          "Probiótico® Vetnil Cães e Gatos":
+            "./images/produtos/31_PROBIÓTICO VETNIL CÃES E GATOS/Probiotico_14g_site_V2.png",
+          "Quetamina Injetável Vetnil":
+            "./images/produtos/32_QUETAMINA INJETÁVEL VETNIL/Quetamina_10mL_site.png",
+          "Vita-Vet C®":
+            "./images/produtos/33_VITA-VET C/Vita Vet C 30 ml_site.png",
+          "Vetmax® plus Suspensão":
+            "./images/produtos/34_VETMAX SUSPENSAO/Vetmax-Susp.-Oral_site.png",
+          "Vetmax® plus ":
+            "./images/produtos/35_VETMAX PLUS COMPRIMIDO/Vetmax-Plus-4-comp_site_V3.png",
+          "Vetaglós®": "./images/produtos/36_VETAGLÓS/Vetaglós_20g_site_V2.png",
+          "Vetnidazol® ":
+            "./images/produtos/vetnil_vetnidazol/pack_Vetnidazol_individual_site.png",
+          "Vetnil® Skin Care Clean":
+            "./images/produtos/vetnil_vetnil-skin-care-clean/skin Care Clean_site_V5.png",
+          "Vetnil® Skin Care Defense":
+            "./images/produtos/vetnil_vetnil-skin-care-defense/skin Care Defense_site_V5.png",
+          "Vetnil® Skin Care Hidrat":
+            "./images/produtos/vetnil_vetnil-skin-care-hidrati/skin Care Hidrat_site_V5.png",
+          "Vetnil Doxiciclina Solução Injetavel":
+            "./images/produtos/vetnil_doxiciclina-in/Doxiciclina Inj_site_selo.png",
+        };
 
         // ==== utilidades ====
         function getParam(name) {
@@ -1477,18 +1484,29 @@
           const h1Doc = tmp.querySelector("h1")?.textContent?.trim();
           if (h1Doc && titleEl) titleEl.textContent = h1Doc;
 
-          // 4) (Opcional) Atualiza a imagem de acordo com o slug ou título extraído
+          // 4) Atualiza a imagem considerando também a VARIANTE do <h2>
           const imgEl = document.getElementById("imgProduto");
           if (imgEl) {
-            const bySlug = PRODUCT_IMG_BY_SLUG[slug];
-            if (bySlug) {
-              imgEl.src = bySlug;
-              imgEl.alt = h1Doc || guessNomeBonito(slug);
-            } else if (h1Doc) {
-              const altSlug = slugify(h1Doc);
-              if (PRODUCT_IMG_BY_SLUG[altSlug]) {
-                imgEl.src = PRODUCT_IMG_BY_SLUG[altSlug];
-                imgEl.alt = h1Doc;
+            const h2Var = (tmp.querySelector("h2")?.textContent || "").trim(); // ex.: "Comprimidos", "Pó", "Injetável"
+            const candidatos = [];
+
+            // 1) Nome + variante (caso mapeado assim, p/ diferenciar imagens do mesmo produto)
+            if (h1Doc && h2Var) candidatos.push(slugify(`${h1Doc} ${h2Var}`));
+
+            // 2) Slug da URL (#produto=...) — continua funcionando
+            if (slug) candidatos.push(slug);
+
+            // 3) Só o <h1>, como fallback
+            if (h1Doc) candidatos.push(slugify(h1Doc));
+
+            for (const k of candidatos) {
+              const src = PRODUCT_IMG_BY_SLUG[k];
+              if (src) {
+                imgEl.src = src;
+                imgEl.alt = h2Var
+                  ? `${h1Doc} — ${h2Var}`
+                  : h1Doc || guessNomeBonito(slug);
+                break;
               }
             }
           }
